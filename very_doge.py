@@ -23,9 +23,13 @@ srs_face = [420*such_factor,180*such_factor]
 srs_size = 214*such_factor
 
 def wow():
-	wow_file = open("e_proc")
+	wow_file = None
 	if len(sys.argv) > 1:
-		wow_file = open(sys.argv[1])
+		wow_home = os.path.dirname(__file__) #<-- absolute dir the script is in
+		such_path = "much_books\\"
+		such_path += sys.argv[1]
+		such_path = os.path.join(wow_home, such_path)		
+		wow_file = open(such_path)
 	else:
 		print "such mistake, more filename"
 
@@ -158,13 +162,24 @@ def such_similar(wow_color, wow_other_color):
 def such_text(wow_image, so_text, very_size, such_pixels, many_collision):
 
 	very_random = random.randint(0,len(so_first)-1)
-	very_font = ImageFont.truetype("/Library/Fonts/Comic Sans MS.ttf", very_size)
+	if os.name == 'nt':
+		very_font = ImageFont.truetype("C:\\Windows\\Fonts\\Comic.ttf", very_size)
+	if os.name == 'posix':
+		very_font = ImageFont.truetype("/Library/Fonts/Comic Sans MS.ttf", very_size)
 	so_draw = ImageDraw.Draw(wow_image)
 	very_color = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 	while such_similar(very_color, [0xCC,0xCC,0x99]):
 		very_color = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
 	wow_word = so_first[very_random] + " " + so_text
 	such_big = so_draw.textsize(wow_word, very_font)
+	print wow_image.size[0]
+	while such_big[0] >= wow_image.size[1]:
+		very_size -= 1
+		if os.name == 'nt':
+			very_font = ImageFont.truetype("C:\\Windows\\Fonts\\Comic.ttf", very_size)
+		if os.name == 'posix':
+			very_font = ImageFont.truetype("/Library/Fonts/Comic Sans MS.ttf", very_size)
+		such_big = so_draw.textsize(wow_word, very_font)
 	such_x = random.randint(0,such_pixels[0]-such_big[0])
 	so_y = random.randint(0,such_pixels[1]-such_big[1])
 
