@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Jeff's tiny but smarter web application</title>
+</head>
+
+<body>
+    <h2>Jeff's tiny but smarter web application</h2>
+    <form action="webapp.py" method="get">
+        <p>Favorite animal? <input type="text" name="animal" value="%s" /></p>
+        <p>Least favorite animal? <input type="text" name="badanimal" value="%s" /></p>
+        <p><input type="submit" value="Go" /></p>
+    </form>
+
+    <!-- results go here -->
+    %s
+
+    <!-- links go here -->
+    %s
+</body>
+</html>
