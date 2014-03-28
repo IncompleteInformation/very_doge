@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!C:/python27/python.exe
 ''' webapp.py
 
     Jeff Ondich, 4/6/12
@@ -97,7 +97,7 @@ def printMainPageAsHTML(animal, badAnimal, templateFileName):
 
 def main():
     parameters = getCGIParameters()
-    printMainPageAsHTML(parameters['animal'], parameters['badanimal'], 'template.html')
+    printMainPageAsHTML(parameters['animal'], parameters['badanimal'], 'very_template.html')
         
 if __name__ == '__main__':
     main()

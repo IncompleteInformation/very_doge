@@ -1,0 +1,924 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf360
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\margl1440\margr1440\vieww9000\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 \\documentclass[11pt]\{article\}\
+\
+\
+\\usepackage\{amsmath\}\
+\\usepackage\{graphicx\}\
+\\usepackage\{amsthm\}\
+\\usepackage\{enumitem\}\
+\\usepackage\{caption\}\
+\\usepackage\{subcaption\}\
+\\usepackage\{float\}\
+\\usepackage\{multicol\}\
+\\usepackage\{wrapfig\}\
+\
+\\setlength\{\\oddsidemargin\}\{0in\}\
+\\setlength\{\\evensidemargin\}\{0in\}\
+\\setlength\{\\textwidth\}\{6.5in\}\
+\\setlength\{\\topmargin\}\{0in\}\
+\\setlength\{\\headheight\}\{0in\}\
+\\setlength\{\\headsep\}\{.4in\}\
+\\setlength\{\\textheight\}\{8.5in\}\
+\
+\\newcommand\{\\slm\}\{\\text\{MERGE\}_\{SL\}\}\
+\\newcommand\{\\daadm\}\{\\text\{MERGE\}_\{DAAD\}\}\
+\\newcommand\{\\pinv\}\{\\text\{$\\pi^\{-1\}$\}\}\
+\
+\\newlist\{pcases\}\{enumerate\}\{1\}\
+\\setlist[pcases]\{  label=Case~\\arabic*:\\protect\\thiscase~,\
+  ref=\\arabic*,\
+  align=left,\
+  labelsep=0pt,\
+  leftmargin=0pt,\
+  labelwidth=0pt,\
+  parsep=0pt\
+\}\
+\\newcommand\{\\case\}[1][]\{%\
+  \\if\\relax\\detokenize\{#1\}\\relax\
+    \\def\\thiscase\{\}%\
+  \\else\
+    \\def\\thiscase\{~#1\}%\
+  \\fi\
+  \\item\
+\}\
+\
+\\newtheorem\{theorem\}\{Theorem\}[section]\
+\\newtheorem\{eg\}[theorem]\{Example\}\
+\\newtheorem\{example\}[theorem]\{Example\}\
+\\newtheorem\{definition\}[theorem]\{Definition\}\
+\\newtheorem\{exercise\}[theorem]\{Exercise\}\
+\\newtheorem\{proposition\}[theorem]\{Proposition\}\
+\\newtheorem\{prop\}[theorem]\{Proposition\}\
+\\newtheorem\{note\}[theorem]\{Note\}\
+\\newtheorem\{lemma\}[theorem]\{Lemma\}\
+\\newtheorem\{corollary\}[theorem]\{Corollary\}\
+\\newtheorem\{openproblem\}[theorem]\{Open Problem\}\
+\\newtheorem\{question\}[theorem]\{Question\}\
+\\newtheorem\{project\}[theorem]\{Project\}\
+\\newtheorem\{problem\}[theorem]\{Problem\}\
+\\newtheorem\{conjecture\}[theorem]\{Conjecture\}\
+\\newtheorem\{algorithm\}[theorem]\{Algorithm\}\
+\\newtheorem\{claim\}[theorem]\{Claim\}\
+\
+\\title\{Baxter Permutations, Snow Leopard Permutations, and Domino Tilings of Aztec Diamonds\}\
+\\author\{Ben Caffrey, Gregory Michel, Kailee Rubin, \\& Jonathan Ver Steegh\\footnote\{Current address: c/o Eric Egge, Department of Mathematics, Carleton College, Northfield, MN 55057; Email: eegge@carleton.edu\}\}\
+\
+\\begin\{document\}\
+\\maketitle\
+\
+\\begin\{abstract\}\
+\
+In \\cite\{ASM Domino\}, Elkies, Kuperberg, Larsen, and Propp introduce a bijection between domino tilings of Aztec diamonds and pairs of alternating sign matrices whose sizes differ by one.\
+In this paper we first study those smaller permutations (viewed as matrices) which are paired with doubly alternating Baxter permutations.\
+We call these permutations snow leopard permutations, and we use a recursive decomposition to show they are counted by the Catalan numbers.\
+We also describe a specific set of transpositions which generates these permutations.\
+Lastly, we investigate the general case, where we conjecture that the number of larger permutations paired with a given smaller permutation is a product of Fibonacci numbers.\
+\\end\{abstract\}\
+\
+\\section\{Introduction and Background\}\
+\\indent An \\emph\{alternating sign matrix (ASM)\} is an $n\\times n$ matrix with entries in $\\\{0,1,-1\\\}$ whose nonzero entries in each row and column alternate in sign and sum to $1$. An \\emph\{Aztec diamond of order $n$\} is a two dimensional array of unit squares with $2i$ squares in rows $i \\leq n$ and $2(2n-i+1)$ squares in rows $n < i \\leq 2n,$ in which the squares are centered on each row. Figure \\ref\{ADexample\} shows the Aztec diamond of order 3.\
+\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=4cm]\{ADexample\}\
+\\caption\{The Aztec diamond of order 3.\}\
+\\label\{ADexample\}\
+\\end\{figure\}\
+\
+\
+Aztec diamonds can be tiled using $2\\times 1$ domino rectangles, which is to say they can be completely covered by disjoint dominoes whose union is the entire diamond. We abbreviate a tiling of an Aztec diamond as a TOAD. In \\cite\{ASM Domino\}, Elkies, Kuperberg, Larsen, and Propp describe how to construct, for each TOAD of order $n$, a pair of ASMs of size $n\\times n$ and $(n+1) \\times (n+1)$. We can describe this construction most easily with an example. In Figure~\\ref\{CompAlgEx\}, the vertices that compose the tiled Aztec diamond fall naturally into two matrices: the red vertices form an $(n+1) \\times (n+1)$ matrix while the blue vertices form an $n \\times n$ matrix. The tops of these matrices align with the northeast edge of the diamond. To construct an ASM on the red vertices, label each vertex of degree 4 with a 1, each vertex with degree 3 with a 0, and each vertex with degree 2 with a $-1$. The $n\\times n$ matrix on the blue vertices can be constructed in the same way except the degree 4 and degree 2 rules are reversed. Given a TOAD $T$, we write $LASM(T)$ to denote the larger of the ASMs and $SASM(T)$ to denote the smaller of the two ASMs. Following \\cite\{ASM Domino\}, we say an $(n+1) \\times (n+1)$ ASM $A$ and an $n \\times n$ ASM $B$ are \\emph\{compatible\} whenever there exists a proper tiling $T$ such that $A=LASM(T)$ and $B=SASM(T)$.  \
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=6cm]\{CompAlgEx\}\
+\\caption\{A domino tiling of the Aztec diamond of order 3\}\
+\\label\{CompAlgEx\}\
+\\end\{figure\}\
+\
+According to the rules defined above, the TOAD in Figure \\ref\{CompAlgEx\} has $$LASM(T)= \\begin\{bmatrix\}0 & 0 & 0 & 1 \\\\ 1 & 0 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 1 & 0 & 0\\end\{bmatrix\}\\ ;\\ SASM(T) = \\begin\{bmatrix\}0 & 0 & 1 \\\\ 1 & 0 & 0 \\\\ 0 & 1 & 0\\end\{bmatrix\}.$$\
+In one-line notation, these matrices refer to the permutations 4132 and 312, respectively.\
+\
+In \\cite\{ASM Domino\}, Elkies, Kuperberg, Larsen, and Propp show that an order $n+1$ ASM with $k$ entries equal to $-1$ is compatible with $2^k$ ASMs of size $n$. As a corollary, each permutation matrix, which is an ASM with no $-1$ entries, is compatible with exactly one smaller ASM. \
+Canary \\cite\{Canary\} gives an algorithm to construct the unique smaller ASM compatible with any given permutation.\
+To implement this algorithm, suppose $\\pi$ is a permutation of length $n+1$.\
+Label the red vertices in a diagram for an Aztec diamond of the appropriate size with the entries of the matrix for $\\pi$.\
+For each blue vertex, if the two red vertices immediately to the northwest, and all red vertices northwest of those, are labeled with 0, then label the blue vertex 0.\
+Now repeat this process in each of the other three directions (northeast, southeast, and southwest).\
+Canary shows that each row and column of blue vertices will now contain an odd number of unlabeled vertices; there is a unique way to label these vertices with $1$s and $-1$s to create an ASM.\
+\
+Canary proves that this smaller ASM will also be a permutation matrix if and only if the original permutation matrix is Baxter. \
+A \\emph\{Baxter\} permutation is a permutation that avoids $2-41-3$ and avoids $3-14-2$, which means that, in one-line notation, it has no subsequence $a_i, a_j, a_\{j+1\}, a_k$ such that $a_\{j+1\} < a_i < a_k < a_j$ (for $3-14-2$) or $a_j < a_k < a_i < a_\{j+1\}$ (for $2-41-3$). For example, $174962835$ is not Baxter because the subsequence $4-62-5$ is an instance of $2-41-3$. In contrast, $879164325$ is Baxter because it contains no instances of $2-41-3$ or $3-14-2$.\
+\
+An interesting class of Baxter permutations are the doubly alternating Baxter permutations. We call a permutation $\\pi = a_1a_2\\cdots a_n$ \\emph\{alternating\} whenever $a_i<a_\{i+1\}$ if $i$ is odd and $a_i>a_\{i+1\}$ if $i$ is even. This is to say that $\\pi$ starts with an ascent and the ascents and descents alternate. A doubly alternating permutation is an alternating permutation whose inverse is also alternating. We call permutations that are both doubly alternating and Baxter \\emph\{doubly alternating Baxter permutations (DABPs)\}. Guibert and Linusson show in \\cite\{DABP Catalan\} that $C_n$, the $n^\{th\}$ Catalan number, counts both the DABPs of length $2n$ and the DABPs of length $2n+1$. The Catalan numbers are ubiquitous in combinatorics and have a number of definitions. The simplest of these is  the formula $C_n = \\frac\{1\}\{n+1\} \\ \{2n \\choose n\}$, but they can also be thought of as the number of Catalan paths, which are paths from $(0,0)$ to $(n,n)$ along an $n\\times n$ square grid using north and east steps and not crossing below the main diagonal. The Catalan numbers also satisfy the recursive definition $C_0 = 1$ and $C_\{n+1\} = \\sum_\{j=1\}^n C_\{j-1\}C_\{n-j\}$ for $n\\geq 0$.\
+\
+In this paper, we introduce \\emph\{snow leopard permutations (SLPs)\}, which are the permutations whose matrices are compatible with doubly alternating Baxter permutation matrices. In Section 2, we characterize these permutations recursively, and by doing so, we show that the compatibility relation in this case is one-to-one, which implies that the snow leopard permutations of length $2n$ are also counted by $C_n$, as are the snow leopard permutations of length $2n+1$. Then, we give a bijection between snow leopard permutations and Catalan paths in Section 3, and in Section 4 we describe a construction of snow leopard permutations based on transpositions. Lastly, in Section 5 we show that the identity permutation of length $n$ is compatible with $F_n$ permutations of length $n+1$, where $F_n$ denotes the $n^\{th\}$ Fibonacci number. We conclude by conjecturing that the number of length $n+1$ permutations with which a length $n$ permutation is compatible is a product of Fibonacci numbers.\
+\
+\
+%%%%%%%%%%%%%%%%%%%%\
+\
+\\section\{Snow Leopard Permutations: a Recursive Characterization\}\
+\
+\\indent In order to construct snow leopard permutations recursively, it is important to first understand how to construct DABPs and TOADs recursively. To understand this process, we first describe how to decompose DABPs and TOADs into smaller DABPs and TOADs, respectively.  \
+\
+\\subsection\{Definitions and Notation\}\
+\
+\\indent Before we begin, we introduce some key definitions and  specific notation for working with permutations in one-line notation. \
+\
+\\begin\{definition\}\
+The complement of a permutation $\\pi = a_1\\cdots a_n$ is $\\pi^C = n-a_1 +1\\ \\ n-a_2+1\\cdots n-a_n+1$. \
+\\end\{definition\}\
+\
+\\begin\{lemma\}\\label\{comp closed\}The complement of a Baxter permutation is Baxter.\
+\\end\{lemma\}\
+\
+\\begin\{proof\}Assume $\\pi$ is a Baxter permutation. Since the patterns $2-41-3$ and $3-14-2$ are complements of each other, $\\pi^C$ will avoid $2-41-3$ since $\\pi$ avoids $3-14-2$ and vice versa. \
+\\end\{proof\}\
+\
+\\begin\{definition\} For any two sequences of positive integers, $\\pi_1 = x_1 \\cdots x_i$ and $\\pi_2 = y_1 \\cdots y_j$, we write $\\pi_1 \\oplus \\pi_2$ to denote the concatenated sequence $x_1 \\cdots x_i y_1 \\cdots y_j$.\
+\\end\{definition\}\
+\
+\\begin\{definition\} Given a sequence of positive integers $\\pi = x_1\\cdots x_i$, and two indices $m$ and $n$ with $1 \\leq m \\leq n \\leq i$, we define $\\pi_\{m\\rightarrow n\}$ to be the subsequence of consecutive entries given by $x_m x_\{m+1\}\\cdots x_n$.\
+\\end\{definition\}\
+\
+\\begin\{definition\} Given a sequence of positive integers $\\pi$ and a constant $b$, we define AUGC($\\pi, b$) to be the sequence of positive integers created by taking the complement of $\\pi$ and then increasing the value of each entry by $b$.\
+\\end\{definition\}\
+\
+\\begin\{example\} Let $\\pi_1 = 14325$ and $\\pi_2= 768$. We have $\\pi_1 \\oplus \\pi_2 = 14325768$, $\\pi_\{1_\{2\\rightarrow 4\}\} = 432$, and AUGC($\\pi_1,5$) = $10\\ 7\\ 8\\ 9\\ 6$. \\end\{example\}\
+\
+\\subsection\{Doubly Alternating Baxter Permutation Decomposition\}\
+\
+\\indent In this subsection, we describe a decomposition algorithm that subdivides a single DABP into two smaller DABPs. In order to build to this algorithm, we must first prove several facts about the structure of DABPs. We begin a Lemma of Ouchterlony from \\cite\{DABP Structure\}.\
+\
+\
+\\begin\{lemma\}\\label\{new stuff\}\
+Suppose $\\pi$ is a DABP of length $n$.  Then the following hold. \\begin\{enumerate\} \\item If $n$ is odd then $\\pi(1) = 1$.\
+\\item If $n$ is even and $\\pi(1) = 1$ then $\\pi(n) = n$.\
+\\item If $n$ is even, $\\pi(1) > 1$, and $k$ is the smallest integer for\
+which $\\pi(k) < \\pi(1)$, then $i < k \\le j$ implies $\\pi(i) < \\pi(j)$.\
+\\end\{enumerate\}\
+\\end\{lemma\}\
+\
+This lemma leads to a number of interesting results, some of which are restatements of certain ideas of \\cite\{DABP Structure\}.\
+\
+\\begin\{proposition\}\\label\{odd trivial\} If $\\pi$ is a doubly alternating Baxter permutation of $odd$ length, then AUGC$(\\pi_\{2\\rightarrow n\},-1)$ is a doubly alternating permutation of even length.\
+\\end\{proposition\}\
+\
+\\begin\{proof\} Assume that $\\pi$ is a DABP of odd length. Then $\\pi(1) = 1$ by Lemma \\ref\{new stuff\}a, so if we take $\\pi' = \\pi_\{2\\rightarrow n\}$ and decrease each entry by 1, we get a permutation. Since $\\pi'$ is a consecutive sub-permutation of $\\pi$ which was Baxter, $\\pi'$ will still avoid $3-12-4$ and $2-41-3$. Also, $\\pi'^C$ will be Baxter by Lemma \\ref\{comp closed\}. Moreover, since the indices are offset by one from the original $\\pi$, the new permutation $\\pi'$ starts with a descent, and then has alternating descents and ascents. Since the complement operation turns ascents into descents and vice versa, $\\pi'^C$ will be alternating. Moreover, since $\\pi(1) = 1$, we know $\\pinv(1) = 1$ as well. This means that $\\pi'^\{-1\}$ also starts with a descent and then has alternating ascents and descents. The sequence of ascents and descents in the inverse of the complement will come from reversing the order of the initial sequence and swapping ascents and descents. (This can be most easily verified by looking at the geometry of the permutation matrices, in which the complement operation corresponds to a vertical reflection and the inverse operation corresponds to a reflection over the line $y=-x$). Since $\\pi'$ has even length and starts with a descent, after which the ascents and descents alternate, it will also end with a descent. This means that reversing the order and swapping ascents and descent will cause $(\\pi'^C)^\{-1\}$ to start with an ascent while still alternating ascents and descents, making it an alternating permutation. Therefore, $\\pi'^C$ is a DABP. Since $\\pi'^C = $AUGC$(\\pi_\{2\\rightarrow n\},-1)$ by construction, we know that AUGC$(\\pi_\{2\\rightarrow n\},-1)$ is a DABP.\\end\{proof\}\
+\
+This result tells us that odd length DABP are equivalent to complements of DABPs that are one size smaller. As a result, we can understand DABPs of odd length by studying DABPs of even length.\
+\
+\\begin\{lemma\}\\label\{all together\}If $\\pi$ is a DABP of even length, and we define the pair $(x,y)$ so that $y=\\pi(x)$ and $x$ is the smallest value such that $\\pi(x) < \\pi(1)$, then $\\pi(i) < \\pi(1)$ if and only if $i \\geq x$. That is, if we plot the permutation $\\pi$ as ordered pairs $(x,\\pi(x))$ on a coordinate grid, then the plot will not cross the horizontal line at $y=\\pi(1)$ more than once.\
+\\end\{lemma\}\
+\
+\\begin\{proof\}This is immediate from Lemma \\ref\{new stuff\} \\end\{proof\}\
+\
+\\begin\{lemma\}\\label\{Decomp Step 1\}If $\\pi$ is a DABP of even length $n$ with $\\pi(1) = \\alpha$, then $\\pi_1 = \\pi_\{1\\rightarrow n-\\alpha + 1\}$ is a DABP augmented by $\\pi(1)-1$ with $\\pi_1(1) = 1$ and $\\pi_2 = \\pi_\{n-\\alpha+2 \\rightarrow n\}$ is a DABP.\
+\\end\{lemma\}\
+\
+\\begin\{proof\}\
+According to Lemma \\ref\{all together\}, all of the terms in $\\pi$ that are greater than or equal to $\\alpha$ come before the terms that are less than $\\alpha$. Thus, the first $n-\\alpha+1$ terms of $\\pi$ must be some permutation of $\\alpha, \\alpha+1,\\cdots,n$. So, if we subtract $\\alpha-1$ from each term, we have a permutation $\\pi_1$ of length $n-\\alpha+1$. Since we know the first value of this was originally $\\alpha$, the resulting permutation has $\\pi(1) = 1$. Moreover, since $\\pi$ avoids $2-41-3$ and $3-14-2$ and $\\pi_1$ is a subsequence of $\\pi$, we see that $\\pi_1$ also avoids these patterns, so it is Baxter. In addition, since $\\pi_1$ is a subsequence of $\\pi$ that starts with an odd index, it follows the same ascent/descent patterns as $\\pi$, so it is alternating. The same holds for $\\pi_1^\{-1\}$, as it is a subsequence of $\\pinv$ starting at an odd index (namely, $\\alpha$). Thus, $\\pi_1$ is a DABP.\
+\
+Similarly, all terms less than $\\alpha$ in $\\pi$ are in the remaining $\\alpha -1$ terms of $\\pi$, so the final $\\alpha - 1$ terms of $\\pi$ are also a permutation of $\\pi$. As with $\\pi_1$, this permutation $\\pi_2$ is a DABP. It avoids the relevant patterns (since $\\pi$ does) so it must be Baxter. Moreover, $\\pi_2$ and $\\pi_2^\{-1\}$ alternate as they are identical to the end of $\\pi$ and the beginning of $\\pinv$ respectively, both of which alternate.\
+\\end\{proof\}\
+\
+\\begin\{theorem\}[DABP Decomposition]\\label\{DABP Decomp\}A permutation $\\pi$ is a DABP of even length if and only if, given $\\pi(1) = \\alpha$ and $\\pi(n-\\alpha-1) = n$, we have that $\\pi_\{2\\rightarrow n-\\alpha\}$ is the complement of a DABP augmented by $\\alpha$ and $\\pi_\{n-\\alpha + 2\\rightarrow n\}$ is a DABP.\
+\\end\{theorem\}\
+\
+\\begin\{proof\}Assume that $\\pi$ is a DABP with $\\pi(1) = \\alpha$. By Lemma \\ref\{Decomp Step 1\}, we know that $\\pi_1 = \\pi_\{1\\rightarrow n-\\alpha + 1\}$ is a DABP augmented by $\\pi(1)-1$ with $\\pi(1) = 1$. Thus, $\\pi_1(1) = n$ by Lemma \\ref\{new stuff\}. Therefore, $\\pi_\{2\\rightarrow n-\\alpha\}$ is an arbitrary Baxter permutation (with each value increased by one). As in the proof of Proposition \\ref\{odd trivial\}, by removing the first entry in a DABP, we lose the doubly alternating property, but we can again restore this, while maintaining the Baxter property, by taking the complement. Thus, $\\pi_\{2\\rightarrow n-\\alpha\}$ is the complement of a DABP augmented by a total of $\\alpha$. In addition, $\\pi_\{n-\\alpha + 2\\rightarrow n\}$ is a DABP as a result of Lemma \\ref\{Decomp Step 1\}.\
+\
+Now, suppose we have two even length DABPs $\\pi_1$ and $\\pi_2$ and we let $\\alpha = |\\pi_2|+1$. We know that $\\pi_1^C$ is Baxter. The complement operation changes ascents to descents and vice-versa. If we increase each value of $\\pi_1^C$ by $\\alpha$, $\\pi_1^C$ will still avoid the necessary patterns to be Baxter and its ascent/descent pattern will not change. We have constructed AUGC($\\pi_1, \\alpha)$, which is a permutation of $\\alpha + 1, \\cdots, |\\pi_1|+|\\pi_2|+1$. Now note that $\\pi_1^* = \\alpha \\oplus$AUGC$(\\pi_1, \\alpha)\\oplus |\\pi_1|+|\\pi_2|+2$ will avoid the necessary patterns to be Baxter but it will also begin and end with an ascent. Now $\\pi=\\pi_1^* \\oplus \\pi_2$ will have the correct ascent/descent pattern because both $\\pi_1^*$ and $\\pi_2$ starts and ends with an ascent and we are adding a descent in the middle by concatenating them. The same holds for $\\pi^\{-1\}$. Also, since both $\\pi_1^*$ and $\\pi_2$ were Baxter, $\\pi$ will be as well. Thus, $\\pi$ is a DABP of length $|\\pi_1| + |\\pi_2| + 2$, which is even.\
+\\end\{proof\}\
+\
+As a note, this result gives an alternate proof of Guibert and Linusson's result from \\cite\{DABP Catalan\}.\
+\
+\\begin\{theorem\}\\label\{DABP Catalan us\}The doubly alternating Baxter permutations of length $2n$ are counted by $C_n$. \\end\{theorem\}\
+\
+\\begin\{proof\}Recall that the Catalan numbers satisfy the recursive definition $C_0 = 1$ and $C_\{n+1\} = \\sum_\{j=1\}^n C_\{j-1\}C_\{n-j\}$ for $n\\geq 0$. We know there is trivially one DABP of length $0$ (the empty permutation, which is trivially a DABP). Furthermore, from this decomposition result, we get a DABP of length $2n$ by merging  two specific DABPs of length $2i$ and $2n-2i$. Since any pair of such DABPs corresponds to a DABP as in Theorem \\ref\{DABP Decomp\}, the number of doubly alternating Baxter permutations satisfies the same recursive relationship as the Catalan numbers. \\end\{proof\}\
+\
+\\subsection\{Aztec Diamond Decomposition\}\
+Suppose $D$ is a TOAD whose LASM is the matrix for a doubly alternating Baxter permutation. Then because LASM($D$) contains no $-1$s, $D$ is completely determined by its DABP. Thus, $D$ inherits an analogous decomposition from its DABP.\
+\
+\\begin\{definition\}We call a tiling of an Aztec diamond $D$ a \\emph\{doubly alternating Aztec diamond (DAAD)\} if LASM(D) is the matrix for a doubly alternating Baxter permutation. \\end\{definition\}\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=9cm]\{AD3654721Dots\}\
+\\caption\{The DAAD corresponding to the DABP 37564812 and its compatible SLP 3654721.\}\
+\\label\{DAAD\}\
+\\end\{figure\}\
+\
+\\begin\{definition\}A \\emph\{block\} is a pair of two dominoes adjacent along a long edge, forming a 2-by-2 box.\\end\{definition\}\
+The DAAD shown in Figure~\\ref\{DAAD\} contains 7 blocks.\
+\
+\\begin\{lemma\}The blocks of a DAAD are in bijection with the 1s in its SASM.\\label\{1s\} \\end\{lemma\}\
+\\begin\{proof\}Let $D$ be a DAAD of order $n$ that contains a block $B.$ By Canary's algorithm, this point may correspond to a 1 in SASM($D$) or a $-1$ in LASM($D$).  However, because LASM($D$) is a permutation, it cannot contain a $-1$.  Thus, a block must correspond to a 1 in SASM($D$). Conversely, a 1 in SASM($D$) must label a vertex of degree 2, which creates a block in $D$.\
+\\end\{proof\}\
+As a note, Lemma~\\ref\{1s\} implies that exactly one block will lie on each diagonal of a DAAD since each row and column of its SASM contain exactly one 1.\
+\\indent Now we are ready to introduce a composition algorithm.  First, we must define a process \\emph\{HS\} which takes a DAAD of order $n$ and returns a DAAD of order $n+2$.\
+\\begin\{algorithm\}[HS]Let $D_1$ denote a DAAD of order $n\\geq 0$. \\end\{algorithm\}\
+\\begin\{pcases\}\
+\\case If $n = 0$, then return \\begin\{figure\}[H]\
+\\includegraphics[width=2cm]\{AD_1\}\
+\\end\{figure\}\
+\\case If $n > 0$, then to construct HS($D_1$):\
+\\end\{pcases\}\
+\\begin\{enumerate\}\
+\
+\\item Reflect $D_1$ over the line $y = -x$.\
+\\item Draw $D_2$, an empty Aztec diamond of order $n+2$.\
+\\item Place $D_1$ at the center of $D_2$.\
+\\item Fill the remainder of $D_2$ with vertical dominoes.\
+\\end\{enumerate\}\
+\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\begin\{subfigure\}\{0.4\\linewidth\}\
+\\centering\
+\\includegraphics[width=6cm]\{AD321\}\
+\\caption\{$D_1$\}\
+\\label\{fig:initialDAAD\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}\{0.4\\linewidth\}\
+\\centering\
+\\includegraphics[width=6cm]\{AD321R\}\
+\\caption\{Step 1\}\
+\\label\{fig:step1\}\
+\\end\{subfigure\}\
+\
+\\begin\{subfigure\}\{0.4\\linewidth\}\
+\\centering\
+\\includegraphics[width=6cm]\{AD321HS\}\
+\\caption\{Steps 2 and 3\}\
+\\label\{step3\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}\{0.4\\linewidth\}\
+\\centering\
+\\includegraphics[width=6cm]\{AD14325HS\}\
+\\caption\{Step 4\}\
+\\label\{hs\}\
+\\end\{subfigure\}\
+\
+\\caption\{An illustration of the HS process. HS takes the DAAD corresponding to DABP 3412 and SLP 321 to the DAAD corresponding to the DABP 153426 and SLP 14325.\}\
+\\label\{fig:HS\}\
+\\end\{figure\}\
+\
+\
+Note that HS($D_1$) will always contain vertical blocks at its N and S edges, which we call a \\emph\{hat\} and \\emph\{shoe\}, respectively. The name HS stems from this terminology. In Figure~\\ref\{hs\} we outline the hat in blue and the shoe in red.\
+\
+Now we are ready to define a merge function which, given two DAADS of order $n_1$ and $n_2$, respectively, returns a DAAD of order $n_1 + n_2 + k,$ for $1\\leq k \\leq 3$. Note that when composing one empty diamond with one non-empty diamond, we assume that $D_1$ is empty.\
+\\begin\{algorithm\}\\label\{Domino Merge\}\
+Given DAADs $D_1$ and $D_2$ of order $n_1$ and $n_2$, respectively, where $n_1$ and $n_2$ are either odd or zero, to find $MERGE_\{DAAD\}(D_1, D_2)$ we do the following.\
+\\end\{algorithm\}\
+\\begin\{pcases\}\
+\\case\
+If $n_1 = 0$, then return HS($D_2$).\
+\\case If $n_1 \\neq  0$ and $n_2 \\neq 0$, then\
+\\end\{pcases\}\
+\\begin\{enumerate\}\
+\\item Draw $D_3$, an empty Aztec diamond of order $n_1 + n_2 + 3$.\
+\\item Place $D_2$ inside $D_3$ so their west edges align. \
+\\item Place HS($D_1$) inside $D_3$ so their east edges align.\
+\\item Fill the remainder of the diamond with horizontal dominoes. \
+\\end\{enumerate\}\
+\
+\\indent Note that the final step of Case 2 is the only possible way to tile the remainder of $D_3$. $D_2$ and HS($D_1$) contain $n_2$ and $n_1+2$ blocks, respectively. As Figures~\\ref\{blocks\} and \\ref\{Step 4\} indicate, the placement of $D_2$ and HS($D_1$) forces a horizontal block at the east edge of $D_2$, which we call a $\\emph\{connector\}$. At this point $D_3$ contains all of its $n_1+n_2+3$ blocks. Recall that each block corresponds to a 1 in SASM($D_3$). Since SASM($D_3$) is the matrix for a permutation of length $n_1+n_2+3$ and the tiling so far has already placed $n_1+n_2+3$ 1s in SASM($D_3$), the remainder of the matrix must be all 0s. By Canary's algorithm this forces us to tile the rest of the diamond with horizontal dominoes.\
+\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\begin\{subfigure\}\{6cm\}\
+\\centering\
+\\includegraphics[width=4cm]\{AD321\}\
+\\caption\{$D_1$\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}\{2cm\}\
+\\centering\
+\\includegraphics[width=1.75cm]\{AD_1\}\
+\\caption\{$D_2$\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}\{7cm\}\
+\\centering\
+\\includegraphics[width=6cm]\{AD7empty\}\
+\\caption\{Step 1\}\
+\\end\{subfigure\}\
+\
+\\centering\
+\\begin\{subfigure\}\{7.5cm\}\
+\\includegraphics[width=7cm]\{MergeEx\}\
+\\caption\{Steps 2 and 3\}\
+\\label\{blocks\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}\{7.5cm\}\
+\\includegraphics[width=7cm]\{AD3654721C\}\
+\\caption\{Step 4\}\
+\\label\{Step 4\}\
+\\end\{subfigure\}\
+\
+\\caption\{An illustration of the composition of DAADs. We outline the connector in red.\}\
+\\label\{DAADCompFig\}\
+\\end\{figure\}\
+\\bigskip\
+\\bigskip\
+\\bigskip\
+Now, suppose we want to invert the process.\
+\\begin\{algorithm\} Let $D$ be a DAAD of order $n\\geq 1$.  To find the unique DAADs $D_1$ and $D_2$ such that $\\daadm(D_1, D_2) = D:$\\end\{algorithm\}\
+\\begin\{enumerate\}\
+\\item Locate the block that lies along the northeast edge of $D$ and call this $B_1$. Recall that a single block lies in each diagonal of a DAAD, so $B_1$ is unique.\
+\\item If $B_1$ is not at the east corner of $D$:\
+\\begin\{enumerate\}\
+\\item Locate the southernmost block that lies on the same vertical as $B_1$ and call this $B_2$. Then $B_1$ and $B_2$ correspond to the hat and shoe created by the HS process.\
+\\item Draw the Aztec diamond $D_1$ such that the north edge of $D_1$ borders the south edge of $B_1$ and the south edge of $D_1$ borders the north edge of $B_2$. This process effectively inverts HS($D_1$) when $D_1$ is not the empty diamond.\
+\\end\{enumerate\}\
+\\item If $B_1$ is at the east corner of $D$, then $D_1$ is empty. This process inverts HS($D_1$) when $D_1$ is the empty diamond.\
+\\item If any blocks inside $D$ lie outside of and to the left of $D_1$ then call the rightmost of these blocks $C$, the connector. Draw the diamond $D_2$ such that the east edge of $D_2$ borders the west edge of $C$ and the west edge of $D_2$ borders the west edge of $D$.\
+\\item If no blocks lie outside of $D_1$, then $D_2$ is the empty diamond.\
+\\end\{enumerate\}\
+\
+\\begin\{theorem\}[DAAD Decomposition] An Aztec diamond $D$ is a DAAD of order $n$ if and only if there exist two DAADS, $D_1$ and $D_2$, such that $MERGE_\{DAAD\}(D_1, D_2) = D$. \\end\{theorem\}\
+\\begin\{proof\}\
+We need to show that both $MERGE_\{DAAD\}$ and its inverse are well-defined maps.\
+First, we show that given two DAADS, $D_1$ and $D_2$, of order $n_1$ and $n_2$, respectively, $D = MERGE_\{DAAD\}(D_1, D_2)$ is also a DAAD.\
+\\begin\{pcases\}\
+\
+\\case\
+Suppose that $n_1 = n_2 = 0$. Then $\\daadm(D_1, D_2) = \\mbox\{HS\}(D_1)$ is the Aztec diamond corresponding to the DABP 12, so $D$ is a $DAAD$.\
+\\case Suppose that $n_1 \\neq 0$ and $n_2 = 0$. Then $D = \\mbox\{HS\}(D_1)$, where $D_1$ is not the empty diamond. Using Canary's algorithm, we can overlay $D_1$ with its corresponding DABP matrix $LASM(D_1)$. Let $\\pi$ denote the permutation encoded by $LASM(D_1)$. To create $HS(D_1)$, we first reflect $D_1$ over the line $y = -x$.  At the permutation level, this corresponds to taking the complement of $\\pi$. Secondly, we place the reflected $D_1$ at the center of $D_3$, an Aztec diamond of order $n_2 + 2$ and fill the remainder of $D_3$ with vertical dominoes. At the matrix level, this process corresponds to placing $LASM(D_1)$ at the center of $LASM(D_3)$, adding a 1 to the beginning of the first row and end of the last row, and filling the remainder with 0s. At the permutation level, we now have $\\pi' = 1 \\oplus \\pi^C \\oplus n_2+2.$ Since $\\pi$ is a DABP, it follows from the decomposition of DABPs that $\\pi'$ must also be a DABP and thus HS($D_1)$ is a DAAD of order $n_2+2$.\
+\\case\
+Suppose that $n_1 \\neq 0$ and $n_2 \\neq 0$. Then to merge $D_1$ and $D_2$ we first create an empty diamond $D_3$ of order $n_1 + n_2 + 3$, in which we place $HS(D_1)$ to the right and $D_2$ to the left. Let $\\pi_i$ denote the permutation encoded by $LASM(D_i)$ and let $D_4 = \\mbox\{HS\}(D_1)$. At the matrix level this placement corresponds to placing $LASM(D_2)$ at the bottom left corner of $LASM(D_3)$ and $LASM(D_4)$ at the top right corner of $LASM(D_3)$. By shifting $LASM(D_3)$ to the right, we augment $\\pi_3$ by $n_2$. When we fill the remainder of $D_4$ with horizontal tiles, we fill the remainder of $LASM(D_3)$ with 0s. From case 2, we know that $\\pi_4 = 1 \\oplus \\pi_1^C \\oplus n_1 + 2$ so at the permutation level, we now have $\\pi_3 = AUGC(\\pi_1, n_1) \\oplus \\pi_4$. Because $\\pi_1$ and $\\pi_4$ are both DABPs, $\\pi_3$ is also a DABP so $D$ is a DAAD. \
+\\end\{pcases\}\
+\\end\{proof\}\
+\
+\
+\\subsection\{Snow Leopard Permutation Decomposition\}\
+\
+The decomposition algorithm described above can also be understood as a decomposition algorithm for the snow leopard permutation that underlies the DAAD. In order to understand this decomposition algorithm's effect on these permutations, it is more helpful to consider the corresponding MERGE operation. Given two snow leopard permutations $\\pi_1$ and $\\pi_2$ with lengths $n_1$ and $n_2$ respectively, we can use an algorithm analogous to the $MERGE_\{DAAD\}$ operation to construct a snow leopard permutation with length $n_1 + n_2 + k,$ $1\\leq k \\leq 3$ in the following way.\
+\
+\\begin\{algorithm\}Given two snow leopard permutations $\\pi_1$ and $\\pi_2$ with lengths $n_1$ and $n_2$ respectively, where $n_1,n_2$ are either odd or zero, we define MERGE$_\{SL\}(\\pi_1,\\pi_2)$ as follows.\
+\\end\{algorithm\}\
+\\begin\{enumerate\}\
+\\item If $n_1 = n_2 = 0$, then  $\\slm(\\pi_1,\\pi_1) = 1$.\
+\\item If $n_1 = 0$ and $n_2 \\neq 0$, then $\\slm(\\pi_1,\\pi_1)= n_2 + 2 \\oplus n_2 + 1 \\oplus \\pi_2$.\
+\\item If $n_2 = 0$ and $n_1 \\neq 0$, then $\\slm(\\pi_1,\\pi_1) = 1 \\oplus \\text\{AUGC\}(\\pi_1, 1) \\oplus n_1 + 2$.\
+\\item If $n_1 \\neq 0$ and $n_2 \\neq 0$, then $\\slm(\\pi_1,\\pi_1) = n_2+2 \\oplus \\text\{AUGC\}(\\pi_1,n_2+2) \\oplus n_1+n_2+3 \\oplus n_2+1 \\oplus \\pi_2$.\
+\\end\{enumerate\}\
+\
+\
+\\begin\{prop\}$\\pi$ is a snow leopard permutation of odd length if and only if there exist snow leopard permutations $\\pi_1, \\pi_2$ of odd length (or length 0) so that $\\pi = \\slm(\\pi_1,\\pi_2)$. \
+\\end\{prop\}\
+\
+\\begin\{proof\}Since the $1$ entries in the permutation matrix that describe a given snow leopard permutation are in bijection with the blocks in the corresponding DAAD, the merging and decomposition process of the snow leopard permutations should exactly mirror that of the $MERGE_\{DAAD\}$ operation from the previous subsection. The reflection over the $y = -x$ axis that happens in the DAAD merge is represented by taking the complement of $\\pi_1$, and the values we add that surround $\\pi_1$ in the merged snow leopard permutation represent the two blocks added in the HS algorithm. The next entry added corresponds to the connector block, and then we add in the $\\pi_2$ to complete the permutation just as we added in the second DAAD to complete the tiling. Therefore, these merge operations are equivalent, so the merging on the snow leopard level falls directly from that in the previous section. \\end\{proof\}\
+\
+As with the $MERGE_\{DAAD\}$ operation, we define an algorithm to invert the process. In other words, given a snow leopard permutation $\\pi$, we can identify the two unique smaller permutations that can be merged to form $\\pi$. \
+\
+\\begin\{algorithm\}[Snow Leopard Decomposition] Given a snow leopard permutation $\\pi$ with length $n$, we can obtain the two component snow leopard permutations $\\pi_1$ and $\\pi_2$ for which $\\pi = \\slm(\\pi_1,\\pi_2)$ as follows.\
+\\begin\{enumerate\}\
+\\item If $\\pi(1) = n$, then $\\pi(2) = n-1$. In this case, $\\pi_1$ is the empty permutation and $\\pi_2$ is equal to $\\pi_\{3\\rightarrow n\}$.\
+\\item If $\\pi(1) = 1$. Now $\\pi_2$ is the empty permutation and $\\pi_1 = \\text\{AUGC\}(\\pi_\{2\\rightarrow n-1\},-1)$.\
+\\item If $1<\\pi(1)<n$, then let $x = \\pi^\{-1\}(n)$. Now $\\pi_1 = \\text\{AUGC\}(\\pi_\{2\\rightarrow x-1\}, -\\pi(1))$ and $\\pi_2 = \\pi_\{x+2 \\rightarrow n\}$.\
+\\end\{enumerate\}\
+\\end\{algorithm\}\
+\
+There are some immediate results from the decomposition and merge algorithm described above.\
+\
+\\begin\{corollary\}\
+The identity permutation $I_n = 123\\ldots n$ and the reverse identity permutation $R_n = n\\ \\ n-1 \\ldots 1$ are both snow leopard permutations for all odd $n$.\
+\\end\{corollary\}\
+\
+\\begin\{proof\}\
+We proceed by induction. For $n=1$, the permutation of length $1$ is compatible with $12$, which is a DABP. Thus, $1 = I_1 = R_1$ is snow leopard. For $n>1$, assume that $I_n$ and $R_n$ are snow leopard. Then $R_\{n+2\} = \\slm(\\emptyset,R_n)$ is a snow leopard permutation and $I_\{n+2\} = \\slm(R_n,\\emptyset)$ is a snow leopard permutation where $\\emptyset$ is the empty permutation.\
+\\end\{proof\}\
+\
+\\begin\{corollary\}\
+If $\\pi$ is a snow leopard permutation of odd length, then $\\pi$ preserves parity, which is to say $\\pi(i)$ is odd if and only if $i$ is odd.\
+\\end\{corollary\}\
+\
+\\begin\{proof\}\
+We proceed by strong induction on $n$, the length of $\\pi$. If $n=1$, then $\\pi = 1$, which preserves parity. For $n>1$, assume all snow leopard permutations of length $k\\leq n$ preserve parity. Let $\\pi$ be a snow leopard permutation of length $n+2$. We can write $\\pi = \\slm(\\pi_1,\\pi_2)$ where $\\pi_1$ and $\\pi_2$ are snow leopard permutations. By the inductive hypothesis, $\\pi_1$ and $\\pi_2$ preserve parity. We consider 3 cases. \
+\\begin\{pcases\}\
+\\case\
+If $\\pi_1 = \\emptyset$, then $\\pi = n+2 \\oplus n+1 \\oplus \\pi_2$. For $i=1$ and $i=2$, $\\pi$ preserves parity since $n+2$ is odd and $n+1$ is even. Since the indices of $\\pi_2$ are shifted by two, the remaining permutation also preserves parity. \
+\\case\
+If $\\pi_2 = \\emptyset$, then $\\pi = 1 \\oplus \\text\{AUGC\}(\\pi_1,1) \\oplus n+2$. Both $\\pi(1)$ and $\\pi(n+2)$ are odd. Moreover, for $1 < i < n+2$, $$\\pi(i) = \\text\{AUGC\}(\\pi_1,1)(i-1) = \\pi_1^C(i-1) + 1 = n+3 - \\pi(i-1) + 1. $$ If $i$ is odd, then $\\pi(i) = n + 4 - \\pi(i-1)$ is an odd integer plus an even integer minus an even integer, so $\\pi(i)$ is odd. On the other hand, if $i$ is even, then $\\pi(i) = n + 4 - \\pi(i-1)$ is an odd integer plus an even integer minus an odd integer, so $\\pi(i)$ is even. Thus, $\\pi$ preserves parity.\
+\\case \
+If $\\pi_1$ and $\\pi_2$ have non-zero odd lengths $n_1$ and $n_2$ with $n_1 + n_2 + 1 = n$, then $\\pi = n_2+2 \\oplus \\text\{AUGC\}(\\pi_1,n_2+2) \\oplus n_1+n_2+3 \\oplus n_2+1 \\oplus \\pi_2$. For $i=1$, $\\pi(i) = n_2+2$, which is odd. For $1 < i \\leq n_1 + 1$, an identical argument as that made in Case 2 shows that $\\pi$ is parity preserving for these $i$. For $i=n_1 + 2$, which is odd, $\\pi(i) = n_1+n_2+3 = n+2$, which is odd. For $i=n_1 + 3$, which is even, $\\pi(i) = n_2+1$, which is even. Finally, for $i> n_1 + 3$, $\\pi(i) = \\pi_2(n_1+3 - i)$. Since $n_1+3-i$ preserves the parity of $i$, so does applying $\\pi_2$. Thus $\\pi$ preserves the parity of these values of $i$. Therefore $\\pi$ is parity preserving for all $i$. \
+\\end\{pcases\} \\end\{proof\}\
+\\begin\{theorem\}The number of snow leopard permutations of length $2n-1$ is $C_n$. \\end\{theorem\}\
+\
+\\begin\{proof\}As in the proof of Theorem \\ref\{DABP Catalan us\}, recall that the Catalan numbers satisfy the recursive definition $C_0 = 1$ and $C_\{n+1\} = \\sum_\{j=1\}^n C_\{j-1\}C_\{n-j\}$ for $n\\geq 0$. Trivially, we know that the permutation $1$ is a snow leopard permutation as it is compatible with $12$, which is a DABP. This tells us that the number of snow leopard permutations of length $1$ is $C_1$. For completion, we will say that the number of snow leopard permutations of length $-1$ is also $1$, which is $C_0$. \\\\\
+\\\\\
+\\indent From the snow leopard permutation decompositon, we know that we can merge two non-empty permutations whose sizes add up to $2n-4$ to create a snow leopard permutation of length $2n-1$. This means that a snow leopard permutation of length $2n-1$ comes from an SLP of length $2j-1$ and an SLP of length $2n-4-2j+1$. If we inductively assume that the former are counted by $C_j$ and the latter are counted by $C_\{n-j-1\}$, we get that the number of snow leopard permutations of size $2n-1$ is given by $\\sum_\{j=0\}^n C_\{j\}C_\{n-j-1\}$, which is identical to the recursive definition of the Catlan numbers.\\end\{proof\}\
+\
+\\section\{Snow Leopard Permutations:  a Bijection with Catalan Paths\}\
+\
+\\indent Thus far, we have showed that the snow leopard permutations are counted by the Catalan numbers through a recursive decomposition.  However, we lack a more direct proof.  In this section we confirm this result by introducing a non-recursive  bijection from snow leopard permutations of length $2n+1$ and $2n+2$ to $\\mbox\{CP\}_\{2n+2\}$, the set of Catalan paths of length $2n+2$. \
+\
+\\begin\{algorithm\}[Ascent/Descent Map] Given a snow leopard permutation $\\pi$ of length $2n+1$, we can construct a corresponding Catalan path $p$ of length $2n+2$ by a function we denote $\\kappa$. We use $p_j$ to denote the $j^\{th\}$ step of $p$.\\end\{algorithm\}\
+\\begin\{pcases\}\
+\\case\
+Suppose $\\pi$ has length $2n+1$ ($n \\geq 0$). We look at consecutive entries $\\pi(i)$ and $\\pi(i+1)$ to define $\\kappa: \\mbox\{SL\}_\{2n+1\} \\to \\mbox\{CP\}_\{2n+2\}$ by\
+$$\
+\\kappa(\\pi)_i = \
+\\begin\{cases\}\
+ & \\pi(i) < \\pi(i+1) \\mbox\{ and \} i\\mbox\{ is odd\}\\\\\
+N &\\mbox\{ or \}\\\\\
+&\\pi(i) > \\pi(i+1) \\mbox\{ and \} i\\mbox\{ is even\}\\\\\
+\\\\\
+ & \\pi(i) < \\pi(i+1) \\mbox\{ and \} i\\mbox\{ is even\} \\\\\
+E &\\mbox\{ or \}\\\\\
+& \\pi(i) > \\pi(i+1) \\mbox\{ and \} i\\mbox\{ is odd\}\
+\\end\{cases\}\
+\\mbox\{ for \} 0 \\leq i \\leq 2n+1$$\
+\\\\ By convention we treat the empty entries $\\pi(0)$ and $\\pi(2n+2)$ as $2n+2$ and 0, respectively. In particular, for every odd length SL permutation we have $\\kappa_0 = N$ and $\\kappa_\{2n+1\} = E.$\
+\\begin\{example\}Suppose $\\pi$ = 1432567.  Then\
+$\\kappa(\\pi)_0 =$ N trivially. Continuing,\
+$\\kappa(\\pi)_1 =$ N because $\\pi(1) = 1 < \\pi(2) = 4$ and 1 is odd.  Similarly, $\\kappa(\\pi)_2 =$ N because $\\pi(2) = 4 > \\pi(3) = 3$ and 2 is even. Continuing in this manner, $\\kappa$ takes us to the path in Figure~\\ref\{path1432567\}. \\end\{example\}\
+\
+\\case Now suppose $\\pi$ has length $2n+2$ ($n\\geq 0$). Then $\\pi = 1 \\oplus AUGC(\\pi',1),$ where $\\pi'$ is a snow leopard permutation of length $2n+1$.  We define $\\kappa(\\pi) = \\kappa(\\pi')$.\
+\
+\\begin\{example\}\
+Let $\\pi = 18567432$. Then $\\pi = 1 \\oplus AUGC(1432567, 1)$. Now $\\kappa(\\pi) = \\kappa(1432567)$, which again yields the path in Figure~\\ref\{path1432567\}.\
+\\end\{example\}\
+\
+\\end\{pcases\}\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=6cm]\{Path1432567\}\
+\\caption\{The path returned when $\\kappa$ is applied to the snow leopard permutations 1432567 and 18567432.\}\
+\\label\{path1432567\}\
+\\end\{figure\}\
+\
+Although it is not immediately obvious that the Ascent/Descent algorithm maps every snow leopard permutation to a Catalan path, we argue by induction that this algorithm is well-defined.\
+\
+\\begin\{theorem\}\
+Suppose $\\pi$ is a snow leopard permutation of length $2n-1$. Then $\\kappa(\\pi) = p$ is a Catalan path of length $2n$.\
+\\end\{theorem\}\
+\
+\\begin\{proof\}\
+If $n=0$ then $\\pi = 1$.  Treating $\\pi(0)$ as 2, we get that $\\kappa(\\pi)_0 = N$ and $\\kappa(\\pi)_1 = E$, so $p$ is a Catalan path of length 2.\
+\
+We continue by strong induction on $n$. Assuming $\\kappa(\\pi)$ is a Catalan path of length $2n$ for all $n \\leq i$, we will show that $\\kappa(\\pi)$ is a Catalan path for $n = i+1$. Let $\\pi$ be a snow leopard permutation of length $2(i+1)-1 = 2i+1.$ We can decompose $\\pi = MERGE_\{SL\}(\\pi_1,\\pi_2)$, where $\\pi_1$ and $\\pi_2$ are snow leopard permutations of length $n_1$ and $n_2$, respectively, and $n_1$ and $n_2$ are both odd. This gives us three cases.\
+\\begin\{pcases\}\
+\\case If $n_1 \\neq 0$ and $n_2 \\neq 0$, then $\\pi = n_2+2 \\oplus AUGC(\\pi_1, n_2+2) \\oplus 2i+1 \\oplus n_2+1 \\oplus \\pi_2.$ By convention, $\\kappa(\\pi)_0 = N.$ Every entry in $AUGC(\\pi_1, n_2+2)$ is larger than $n_2+2$, so $\\pi(1)<\\pi(2)$, which gives us that $\\kappa(\\pi)_1 = N$. Now $\\pi_\{2\\to n_1+1\} = AUGC(\\pi_1, n_2+2)$. However, augmenting $\\pi_1^C$ does not affect the ascents and descents of $\\pi_1^C$, so $\\kappa(AUGC(\\pi_1, n_2+2)) = \\kappa(\\pi_1^C)$. Since $\\pi_1$ is a snow leopard permutation with length $n_1 < 2i+1,$ $\\kappa(\\pi_1) = p_1$ is a Catalan path of length $n_1+1$ by our inductive hypothesis. Taking the complement of $\\pi_1$ turns all ascents into descents and all descents into ascents, which consequently replaces all N steps in $p_1$ with E steps and vice versa. However, $\\pi_1^C$ starts at index 2 of $\\pi$ instead of index 1. Thus, when insering $\\pi_1^C$ into $\\pi$ we increase each index of $\\pi_1^C$ by 1, which changes the parity of each index. Effectively, we again replace each N step in $\\kappa(\\pi_1^C)$ with an E step and vice versa, creating a Catalan path $p_1'$. Note that $p_1' \\neq p_1$. Because $\\pi_1^C$ does not fall at the beginning or end of the decomposition of $\\pi$, $\\kappa$ no longer applies the two trivial steps to $\\pi_1$. Thus, $\\pi_1 = N, \\pi_1', E$.\
+\\\\\
+\\indent Continuing along, $2i+1$ is the largest entry of $\\pi$ so $\\pi(n_1+1)<\\pi(n_1+2) = 2i+1$, where $n_1+1$ is even. This gives us $\\kappa(\\pi)_\{n_1+1\}=E.$ Finally, $\\pi_\{n_1+3\\to 2i+1\} = \\pi_2.$ Since $n_2 < 2i+1,$ we know that $\\kappa(\\pi_2)=p_2$ is a Catalan path by the inductive hypothesis. When inserting $\\pi_2$ into $\\pi$, we must ignore the first N step of $\\kappa(\\pi_2)$ since $\\pi_2$ does not fall at the beginning of $\\pi$. Thus, $\\kappa(\\pi)_\{n_1+3\}, \\kappa(\\pi)_\{n_1+4\}, \\ldots, \\kappa(\\pi)_\{2i+1\} = p_2'$ where $p_2 = N, p_2'$.\
+\\indent Overall we have that $\\kappa(\\pi) = N, N, p_1', E, E, N, p_2' = N, p_1, E, p_2$, where $p_1$ and $p_2$ are Catalan paths of length $n_1+1$ and $n_2+1$, respectively. Thus, $\\kappa(\\pi)$ is a Catalan path of length $n_1+n_2+4 = 2i+2.$\
+\
+\\case If $n_1 = 0$ and $n_2 \\neq 0$. Then $\\pi = n_2+2 \\oplus n_2+1 \\oplus \\pi_2$. By convention, $\\kappa(\\pi)_0 = N.$ Since $\\pi(1) = n_2+1 < \\pi(2) = n_2+2$ and $n_2+2$ is odd, $\\kappa(\\pi)_1 = E.$ Next, since every entry of $\\pi_2$ is smaller than $n_2+1$, $\\pi(2) = n_2+1 < \\pi(3)$ which means that $\\kappa(\\pi)_2=N$. Finally, $\\kappa(\\pi_2) = p_2$ where $p_2$ is a Catalan path of length $n_2+1$. Inserting $\\pi_2$ into $\\pi$, we must ignore the first step of $p_2$ because $\\pi_2$ does not fall at the beginning of $\\pi$. Thus, \
+$\\kappa(\\pi)_3, \\kappa(\\pi)_4, \\ldots, \\kappa(\\pi)_\{n_2+2\} = p_2'$ where $p_2 = N, p_2'$.\
+\\indent Overall, we have that $\\kappa(\\pi) = N, E, N, p_2' = N, E, p_2,$ where $p_2$ is a Catalan path of length $n_2+1.$ Thus, $\\kappa(\\pi)$ is a Catalan path of length $n_2+3 = 2i+2$.\
+\\case If $n_1 \\neq 0$ and $n_2 = 0,$ then $\\pi = 1 \\oplus AUGC(\\pi_1, 1) \\oplus 2i+1$. By convention, $\\kappa(\\pi)_0 = N$. Since 1 is the smallest entry of $\\pi$, $\\pi(1)=1<\\pi(2)$ so $\\kappa(\\pi)_1 = N$. Now $\\pi_\{2 \\to 2i+1\} = AUGC(\\pi_1, 1)$. Following the same logic from Case 1, $\\kappa(\\pi)_2, \\kappa(\\pi)_3, \\ldots \\kappa(\\pi)_\{1+n_1\} = p_1',$ where $\\kappa(\\pi_1) = p_1 = N, p_1',E$. Next, $2i+1$ is the largest entry of $\\pi$, so $\\pi(2i)<\\pi(2i+1) = 2i+1,$ giving us that $\\kappa(\\pi)_\{2i\}=E$. Finally, $\\kappa(\\pi)_\{2i+1\} = E$ by convention.\
+Overall, we have that $\\kappa(\\pi) = N, N, p_1',E,E = N,p_1,E$, where $p_1$ is a Catalan path of length $n_1+1$. Thus, $\\kappa(\\pi)$ is a Catalan path of length $n_1+3 = 2i+2$.\
+\\end\{pcases\}\
+\\end\{proof\}\
+\
+Now that we have a method to construct a Catalan path from a snow leopard permutation, we need a method to construct a snow leopard permutation from a Catalan path. In particular, we show how to invert the Ascent/Descent map.\
+\\begin\{algorithm\} [First-Touch Algorithm] This algorithm takes us from Catalan paths of length $2n$ to snow leopard permutations of length $2n+1$. We will abbreviate the "First-Touch" function to FT. Here, we assume that Catalan paths are drawn on a finite lattice, such that each path begins at (0,0) and includes N and E steps of length 1. We write $d_i$ to denote the diagonal line $y=x+i$. Note that no path can cross below the main diagonal, $d_0$. Let $p$ denote a Catalan path of length $2n$.\
+\\begin\{pcases\}\
+\\case If $n=0$, then $FT(p) = \\emptyset$\
+\\case If $n = 1$, then $FT(p) = 1$\
+\\case If $n > 1$, then to construct $FT(p)$:\
+\\end\{pcases\}\
+\\begin\{enumerate\}\
+\\item Label the vertices down $d_0$ with consecutive odd integers $1, 3, \\ldots, 2n-1$. Suppose $k$ is the label where the path first touches $d_0$.\
+\\item Define $p_1$ as the subpath of $p$ before the first touch that lies above $d_1$. Define $p_2$ as the subpath of $p$ after the first touch.\
+\\item If $k > 1$, then $FT(p) = k \\oplus AUGC(FT(p_1),k) \\oplus 2n-1 \\oplus k-1 \\oplus FT(p_2)$. If $k = 1$, then $p_2$ is empty so $FT(p) = 1 \\oplus AUGC(FT(p_1),1) \\oplus 2n-1$.\
+\\end\{enumerate\}\
+\\end\{algorithm\}\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\begin\{subfigure\}[t]\{8cm\}\
+\\centering\
+\\includegraphics[width=6cm]\{FT1\}\
+\\caption\{A Catalan path $p$ of length 8.\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}[t]\{8cm\}\
+\\centering\
+\\includegraphics[width=6cm]\{FT2\}\
+\\caption\{Since $p$ first touches $d_0$ at 1, $FT(p) = 1 \\oplus AUGC(FT(p_1),1) \\oplus 7$, where $p_1$ is the red subpath above.\}\
+\\end\{subfigure\}\
+\
+\\begin\{subfigure\}\{8cm\}\
+\\includegraphics[width=6cm]\{FT3\}\
+\\centering\
+\\caption\{The subpath $p_1$ first touches $d_1$ at 3, so $FT(p_1) = 3 \\oplus AUGC(FT(p_2),3) \\oplus 5 \\oplus 2 \\oplus FT(p_3)$, where $p_2$ is the subpath in red and $p_3$ is the subpath in green. $FT(p_2) = FT(p_3) = 1$, so $FT(p_1) = 34521$ and $FT(p) = 1432567$.\}\
+\\end\{subfigure\}\
+\\caption\{The First-Touch algorithm takes the path in Figure 6 and returns the snow leopard permutation 1432567.\}\
+\\end\{figure\}\
+\
+\\begin\{theorem\}\
+$\\kappa$ and $FT$ are inverses of each other.\
+\\end\{theorem\}\
+\\begin\{proof\}\
+Let $p$ be a Catalan path of length $2n$. If $n = 1$, then $p = N,E$ is composed of exactly one north step and one east step. Thus $\\kappa(FT(p)) = \\kappa(1) = N,E = p$. Thus, for a trivial path, $\\kappa$ and $FT$ are inverse maps. \
+\
+We proceed by strong induction on $n$. That is, assuming that $\\kappa(FT(p))=p$ for all paths of length $n \\leq i$, we will show that $\\kappa(FT(p))=p$ for all paths of length $n = i+1$. Let $p$ be a path with length $2i+2$. We can decompose $p = N,p_1,E,p_2$ where $p_1$ is a Catalan path that doesn't touch the diagonal, $p_2$ is a Catalan path, and the divide between $p_1$ and $p_2$ happens exactly when the path first touches the diagonal (it is possible for either $p_1$ or $p_2$ to be the empty Catalan path). If we apply $FT$ to $p$, we will be in Case $3$, since we are assuming $p$ has length greater than $2$. This gives us two cases.\
+\\begin\{pcases\}\
+\\case If $p_2 = \\emptyset$, then $k=1$ (where $k$ is defined in Case $3$ of $FT$). Thus, $FT(p) = k \\oplus AUGC(FT(p_1),k) \\oplus 2n-1$. We can consider the string of ascents and descents that correspond to $FT(p)$. Since every value of $AUGC(FT(p_1),k)$ is greater than $k$, the permutation starts with an ascent. Likewise, since it is a permutation of length $2n-1$ that ends with $2n-1$, it must also end with an ascent. Also, the string of ascents and descents that come from the $AUGC(FT(p_1),k)$ component of $FT(p)$ are exactly the opposite of those that come from $FT(p)$, since taking the complement reverses ascents and descents. Now consider $\\kappa(FT(p)) = \\kappa(k \\oplus AUGC(FT(p_1),k) \\oplus 2n-1)$. This Catalan path starts with a north step, since $FT(p)$ starts with an ascent. Then we apply $\\kappa$ to the $AUGC(FT(p_1),k)$ component of $FT(p)$, however we are off by one index (since we already considered one ascent). Being off by one index will turn even indices into odd indices and odd indices into even indices. Therefore, the steps that are added to our path are exactly the reverse of those that would have been added had we taken only $\\kappa(AUGC(FT(p_1),k)$, which are the reverse of those that come from $\\kappa(FT(p_1))$. The two reversals undo each other and we add the steps that correspond to $\\kappa(FT(p_1))$, which is $p_1$ by our inductive hypothesis. The final step is an ascent in an even index, which corresponds to an E step, so all together, $\\kappa(FT(p)) = N,p_1,E = p$. \
+\
+\\case If $p_2$ is non-empty, then $FT(p) = k \\oplus AUGC(FT(p_1),k) \\oplus 2n-1, k-1 \\oplus FT(p_2)$. The exact logic of Case 1 gives us that $\\kappa(FT(p))$ starts with $N,p_1,E,\\ldots$. This is followed by a N step, since the $2n-1$ to $k-1$ gap is a descent at an odd index. This is then followed by an $E$ step, since $k-1$ to the start of $FT(p_2)$ will be a gap that corresponds  to a descent in an even index. After that, we are exactly in an odd index, so we add the result of $\\kappa(FT(p_2))$, excluding its trivial first N step because $FT(p_2)$ does not fall at the beginnging of $FT(\\pi)$. By our inductive hypothesis, $\\kappa(FT(p_2)) = p_2$, so combining this with the north step we just added, we get $\\kappa(FT(p)) = N,p_1,E,p_2 = p$. \
+\\end\{pcases\}\
+\\end\{proof\}\
+\
+\
+\\section\{Snow Leopard Permutations: a Characterization with Transpositions\}\
+\
+\\indent It is well known that every permutation is a product of transpositions and even a product of adjacent transpositions. In this section, we show that all snow leopard permutations of odd length can be constructed using a particular set of transpositions. We begin by defining these transpositions.\
+\
+\\begin\{definition\} [Snow Leopard Transpositions] For any substring $x_\{i\},...,x_\{j\}$ of a permutation $\\pi$, define the following transpositions.\
+\\begin\{enumerate\}\
+\
+\\item If $x_\{i\}$ and $x_\{j\}$ are odd and $x_\{i-1\},x_\{i\},...,x_\{j\},x_\{j+1\}$ or $x_\{i-1\},x_\{j\},...,x_\{i\},x_\{j+1\}$ is a decreasing sequence of consecutive integers, then we write $\\tau_\{1\}(\\pi)$ to denote the permutation obtained from $\\pi$ by interchanging  $x_\{i\}$ and $x_\{j\}$.\
+\\item If $x_\{i\}$ and $x_\{j\}$ are even and $x_\{i-1\},x_\{i\},...,x_\{j\},x_\{j+1\}$ or $x_\{i-1\},x_\{j\},...,x_\{i\},x_\{j+1\}$ is an increasing sequence of consecutive integers, then we write $\\tau_\{2\}(\\pi)$ to denote the permutation obtained from $\\pi$ by interchanging $x_\{i\}$ and $x_\{j\}$.\
+\\end\{enumerate\}\
+Note that if either $x_\{i\}$ or $x_\{j\}$ occurs at $\\pi(1)$ or $\\pi(n)$ we then waive any requirement for the behavior of $\\pi(0)$ or $\\pi(n+1)$ respectively (possibly both).\
+\\end\{definition\}\
+\
+For example, given the permutation $\\pi = 983654721$ we can see the substring 36547 is one transposition of even integers away from being a consecutive sequence of increasing integers, so $\\tau_\{2\}(\\pi) = 983456721$. Similarly, given $\\pi = 567894321$ we see the substring 4321 is a decreasing sequence of consecutive integers (here we waive any requirement for the behavior of the $(n+1)^\{st\}$ entry, so $\\tau_\{1\}(\\pi) = 567894123$.\
+\
+\\begin\{proposition\}\
+A permutation of odd length is a snow leopard permutation if and only if it can be obtained from $R_n$ using a sequence of the transpositions described in Definition 4.1.\
+\\end\{proposition\}\
+\
+To prove this result we describe how each transposition of a snow leopard permutation corresponds with a transformation of the associated DABP. In particular, we prove these transpositions maintain the property of being snow leopard by showing that the accompanying DABP transformations preserve both the doubly alternating and Baxter properties. Then we show inductively that every snow leopard permutation is a product of transpositions applied to $\\pi = R_n$. But first we must understand a basic property of the relationship between a DABP and its compatible snow leopard permutation.\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=15cm]\{SLTranspositionGraph3.jpg\}\
+\\caption\{Graphs showing every snow leopard permutation of length 3, 5, and 7 as a product of the transpositions described in Definition 4.1.\}\
+\\label\{Transpositions\}\
+\\end\{figure\}\
+\
+\\begin\{lemma\} Let $\\pi_\{1\}$ be a snow leopard permutation and let\
+$\\pi_\{2\}$ be its corresponding DABP. Now let $m,m-1,...,n+1,n$\
+be a decreasing substring of consecutive integers in $\\pi_\{1\}$ with\
+$\\pi_\{1\}(k)=m$ and $m,n$ both odd. Then $\\pi_\{2\}$ must have the\
+following substring starting at $\\pi_\{2\}(k)$:\
+$$m,m+1,m-2,m-1,...,n+2,n+3,n,n+1.$$ Similarly, if $\\pi_\{1\}$\
+contains an increasing substring of consecutive integers,\
+$n,n+1,...,m-1,m$, with $\\pi_\{1\}(k)=n$ and $m,n$ both even, then\
+$\\pi_\{2\}$ must have the substring\
+$$n+1,n,n+3,n+2,...,m-1,m-2,m+1,m$$ beginning at position $k-1$.\
+\\end\{lemma\}\
+\
+For example, if $\\pi_\{1\} = 7654321$, then the compatible DABP is $\\pi_\{2\} = 78563412$. Similarly, if a snow leopard permutation contains the substring $45678$ beginning at position $k$, then the compatible DABP must contain the substring $547698$ beginning at position $k$. Note that because snow leopard permutations map even integers to even integers and odd integers to odd integers, the parity of $m$ and $k$ are the same.\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=15cm]\{IncreasingDecreasingPatterns4.jpg\}\
+\\caption\{Small examples of the DABP patterns corresponding to increasing (left) and decreasing (right) strings of consecutive integers in our snow leopard permutation.\}\
+\\label\{Patterns\}\
+\\end\{figure\}\
+\
+\\begin\{proof\}\
+We can appeal to the one-to-one correspondence between snow leopard permutations and DABPs. \
+Suppose $\\pi_2$ is a DABP containing the substring $$S = m, m+1, m-2, m-1, \\ldots, n+2, n+3, n, n+1,$$ where $ m =\\pi_2(k)$ and $k$ is odd. The ascents and descents of this sequence alternate, with the ascents starting at odd indices, so it is possible to construct the remainder of $\\pi_2$ such that $\\pi_2$ is alternating. It is tedious, though straight-forward to show that we can construct $\\pi_2$ such that $\\pi_2$ is also doubly alternating and Baxter. Let $\\pi_1$ denote the snow leopard permutation compatible with $\\pi_2$. Using Canary's algorithm we can then show that $S$ forces $\\pi_1$ to contain the substring $m, m-1, \\ldots, n+1, n$, where $\\pi_1(k)=m$. We leave this as an exercise for the reader. Snow leopard permutations preserve parity, so $k$ being odd implies that $m$ and $n$ are also odd. Once we have constructed $\\pi_2$, the one-to-one correspondence between DABPs and snow leopard permutations ensures that $\\pi_2$ is unique.\
+The second part of the lemma follows from a similar argument.\
+\\end\{proof\}\
+\
+Now we have the tools to show that if any of the transpositions described above are applied to a snow leopard permutation, the result is another snow leopard permutation.  \
+\
+\\begin\{lemma\}\
+Let $\\pi_\{1\}$ be a snow leopard permutation with $\\pi_\{1\}(k) = m$ decreasing consecutively to $\\pi_\{1\}(l) = n$ with $m$ and $n$ both odd. Further let, $\\pi_\{1\}(k-1)=m+1$ and $\\pi_\{1\}(l+1)=n-1$. Now let $\\pi_\{2\}$ be the compatible DABP with $\\pi_\{2\}(k) = m$, $\\pi_\{2\}(k+1) = m+1$, $\\pi_\{2\}(l) = n$, and $\\pi_\{2\}(l+1) = n+1$. We can transform $\\pi_\{2\}$ by setting $\\pi_\{2\}(k) = n$, $\\pi_\{2\}(k+1) = m$, $\\pi_\{2\}(l) = n+1$, and $\\pi_\{2\}(l+1) = m+1$. This resulting matrix is still doubly alternating and Baxter and the resulting compatible matrix is $\\tau_\{1\}(\\pi_\{1\})$.\
+\\end\{lemma\}\
+\
+\\begin\{proof\}\
+Notice that because $k$ is odd, there must exist a descent from $\\pi_\{2\}(k-1)$ to $\\pi_\{2\}(k)$. Because $n < m$ this descent is maintained in the transformed matrix. $\\pi_\{2\}(k) = n$ then ascends to $\\pi_\{2\}(k+1) = m$, then descends to $\\pi_\{2\}(k+2) = m-2$. At the other end of our substring, we see that $\\pi_\{2\}(l-1) = n+3$ falls to $\\pi_\{2\}(l) = n+1$ which then rises to $\\pi_\{2\}(l+1) = m+1$. Finally, because $m+1 > n+1$, we know the descent to $\\pi_\{2\}(l+2)$ is maintained. Therefore our transformed matrix is alternating.\
+\
+A look at the inverse of the transformed matrix reveals that, because $k < l$, $\\pi_\{2\}^\{-1\}(n-1)$ descends to $\\pi_\{2\}^\{-1\}(n) = k$. Then $\\pi_\{2\}^\{-1\}(n) = k$ ascends to $\\pi_\{2\}^\{-1\}(n+1) = l$, followed by a descent to the unaltered $\\pi_\{2\}^\{-1\}(n+2) = l-2$. At the other end of the permutation we observe $\\pi_\{2\}^\{-1\}(m-1) = k+3$ descending to $\\pi_\{2\}^\{-1\}(m) = k+1$, which in turn ascends to $\\pi_\{2\}^\{-1\}(m+1) = l+1$. Because $l+1 > k+1$ we know our descent from $\\pi_\{2\}^\{-1\}(m+1)$ to $\\pi_\{2\}^\{-1\}(m+2)$ is maintained. Thus the inverse of our transformed matrix is alternating and we can conclude that our transformed matrix is doubly alternating.\
+\
+To show that the transformed permutation is Baxter, we must show there exist no occurences of the pattern 2-41-3 or 3-14-2. Note that for the transformation to have created one of these patterns, our ``41'' or ``14'' must involve one of the altered entries. If one of the forbidden patterns appears in our transformed permutation and the ``41'' or ``14'' exist entirely to either side of our altered entries, the forbidden pattern must have appeared in our original permutation. Within our altered entries only four adjacent pairs vary by more than two. Therefore we need only to check four cases for the possibility of a forbidden pattern. Assume to the contrary that our transformation has created a forbidden pattern.\
+\\begin\{pcases\}\
+\\case The ``41'' of the forbidden pattern occurs at $\\pi(k-1)$ and $\\pi(k)$. Because all entries $n$ to $m+1$ appear to the right of $\\pi(k)$, we see that the ``2'' and ``3'' of our pattern must be greater than $m+1$. But if that were the case, the ``2-41-3'' pattern would have already existed when $\\pi(k) = m$, which is a contradiction.\
+\
+\\case The ``14'' of the forbidden pattern occurs at $\\pi(k)$ and $\\pi(k+1)$. We see all entries between $\\pi(k)$ and $\\pi(k+1)$ are to the right of $\\pi(k+1)$, so we cannot have created a forbidden pattern here.\
+\
+\\case The ``14'' of the forbidden pattern occurs at $\\pi(l)$ and $\\pi(l+1)$. We see all entries between $\\pi(l)$ and $\\pi(l+1)$ are to the left of $\\pi(k+1)$, so we cannot have created a forbidden pattern here.\
+\
+\\case The ``41'' of the forbidden pattern occurs at $\\pi(l+1)$ and $\\pi(l+2)$. Because all entries $n$ to $m+1$ appear to the left of $\\pi(l+1)$, we see that the ``3'' and ``2'' of our pattern must be less than $n$. But if that were the case, the ``2-41-3'' pattern would have already existed when $\\pi(l+1) = n$, which is a contradiction.\
+\\end\{pcases\}\
+\
+Therefore, in all cases, the transformation of $\\pi_2$ is a  DABP compatible with $\\tau_1(\\pi_1)$. As such, $\\tau_1(\\pi_1)$ is a snow leopard permutation, which shows directly that the set of snow leopard permutations is closed under $\\tau_1$. \\end\{proof\}\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=15cm]\{MatrixTransformation2.jpg\}\
+\\caption\{An example of the transposition of a snow leopard permutation and corresponding transformation of the compatible DABP described in Lemma 4.4.\}\
+\\label\{MatrixTransformation\}\
+\\end\{figure\}\
+\
+\\begin\{lemma\}\
+Let $\\pi_\{1\}$ be a snow leopard permutation with $\\pi_\{1\}(k) = m$ increasing consecutively to $\\pi_\{1\}(l) = n$ with $m$ and $n$ both even. Further let, $\\pi_\{1\}(k-1)=m-1$ and $\\pi_\{1\}(l+1)=n+1$. Let $\\pi_\{2\}$ be the compatible DABP with $\\pi_\{2\}(k) = m+1$, $\\pi_\{2\}(k+1) = m$, $\\pi_\{2\}(l) = n+1$, and $\\pi_\{2\}(l+1) = n$. We can transform $\\pi_\{2\}$ by setting $\\pi_\{2\}(k) = n+1$, $\\pi_\{2\}(k+1) = m+1$, $\\pi_\{2\}(l-1) = n$, and $\\pi_\{2\}(l) = m$. This resulting matrix is still doubly alternating and Baxter and the resulting compatible matrix is $\\tau_\{2\}(\\pi_\{1\})$.\
+\\end\{lemma\}\
+\
+\\begin\{proof\}\
+By switching all instances of ``increase'' and ``decrease'' we can turn our proof of Lemma 4.4 into a proof of Lemma 4.5. \\end\{proof\}\
+\
+We have proven that the set of snow leopard permutations of odd length is closed under $\\tau_\{1\}$ and $\\tau_\{2\}$. The only remaining task is to show that each snow leopard permutation of odd length can be constructed from $R_n$ by applying $\\tau_1$ and $\\tau_2$. We can do this inductively using the recursive decomposition described in section 2 and shown in Figure~\\ref\{RecursiveStructure\}. Figure~\\ref\{Transpositions\} shows the base cases for $n=3$, $n=5$, $n=7$.\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=9cm]\{RecursiveStructure.jpg\}\
+\\caption\{The non-trivial recursive structure of a snow leopard permutation.\}\
+\\label\{RecursiveStructure\}\
+\\end\{figure\}\
+\
+\\begin\{proof\}\
+Assume we can construct every odd snow leopard permutation up to length $n$. Using the snow leopard permutation decomposition, which is pictured in Figure \\ref\{RecursiveStructure\}. To generate any snow leopard permutation of length $n$, first we transpose the hat ($h$) and shoe ($k$) into place using $\\tau_\{1\}$. Then, using our inductive hypothesis, we can immediately construct the snow leopard permutation comprising of the entries $1,2,\\ldots,k-2$. Generating the component of the snow leopard permutation that came from the complement of a smaller snow leopard permutation and  spans $k+1, k+2,\\ldots, h-1$ does not immediatly follow from the inductive hypothesis. But notice that taking the complement of a snow leopard permutation changes all increases to decreases and vice versa. Additionally, notice that because $k$ and $h$ are odd, $SL^\{C\}$ has parity reversed. By repeated application of $\\tau_1$, we can transform the all-decreasing substring $h-1, h-2,\\ldots, k+1$ into the all-increasing substring $k+1, k+2, \\ldots, h-1$. Now note that we can construct $SL^\{C\}$ in same way we inductively assumed we could generate SL, but with the opposite transposition at every step. Again, this is due to the fact that all increases and decreases have reversed and the parity has reversed, so if we apply $\\tau_1$ where we would have applied $\\tau_2$ and vice-versa, we can constuct $SL^\{C\}$. \
+\
+In the other cases of the snow leopard permutation decomposition, which arise when one of the two permutations that make up the larger snow leopard permutation is empty, we can use a similar argument to contruct the permutation with $\\tau_1$ and $\\tau_2$. \
+\
+Therefore, we have constructed the entirity of this snow leopard permutation of odd length by placing the hat and shoe using $\\tau_1$ and by placing the decomposed portions of the snow leopard permutation using sequences of $\\tau_1$ and $\\tau_2$ that were initially used to construct them. \\end\{proof\}\
+\
+\
+\
+\\section\{Compatible Permutation Pairs and Products of Fibonacci Numbers\}\
+\\indent So far, we have considered doubly alternating Baxter permutations, which have the property that for each DABP of length $n+1$, there is a unique compatible permutation of length $n$. Conversely, we know that for each snow leopard permutation of length $n$ there is a unique compatible DABP of length $n+1$. However, if we consider, for a given permutation of length $n$, all compatible permutations of length $n+1$, regardless of whether they are doubly alternating, we get different results. Here are a few examples of permutations of length $n$ listed with all of their compatible permutations of length $n+1$.\
+\
+\\begin\{enumerate\}\
+\\item $123$ is compatible with $1234, 1324, 2134, 2143, 1243$.\
+\
+\\item $213$ is compatible with $2314, 3214, 3124$.\
+\
+\\item $1234$ is compatible with $13254, 13245, 12354, 12345, 21354, 21345, 12435, 21435$.\
+\
+\\item $1342$ is compatible with $14352, 13452, 13542$.\
+\
+\\item $3421$ is compatible with $43521, 35421, 34521, 43512, 35412, 34512$.\
+\
+\\end\{enumerate\}\
+\
+We have verified the following conjecture for permutations up to length $n=11$.\
+\
+\\begin\{conjecture\} Suppose $\\sigma$ is a permutation of length $n$ for which there exists at least one compatible permutation of length $n+1$. Then the number of permutations of length $n+1$ compatible with $\\sigma$ is a product of Fibonacci numbers.\
+\
+\\end\{conjecture\}\
+\
+In this section, we prove some results aimed at eventually proving this conjecture. The overall strategy is as follows.\
+\
+\\begin\{enumerate\}\
+\\item We show that transposing adjacent consecutive entries in any larger permutation maintains the same smaller compatible permutation.\
+\
+\\item We show that these swaps give us all of the permutations compatible with a length $n$ identity permutation $I_n = 123 \\ldots n$, or a length $n$ reverse identity permutation $R_n = n\\ n-1 \\ldots 1$, and that the number of these permutations is $F_\{n+1\}$.\
+\
+\\item We conjecture that any permutation of length $n+1$ compatible with a permutation of length $n$ can be changed, using transpositions of adjacent consecutive entries, into a permutation whose TOAD consists of disjoint strips of blocks where each strip resembles either the identity permutation or its reverse.\
+\
+\\item We conjecture that entries cannot be swapped between strips of blocks while maintaining the same smaller permutation. Given this property, each strip must represent a Fibonacci number of possible larger compatible permutations. So, if we have $m$ total strips of blocks in the TOAD of the permutation described in step 3, then the total number of permutations of length $n+1$ compatible with the given length $n$ permutation is a product of $m$ Fibonacci numbers.\
+\
+\\end\{enumerate\}\
+\
+We begin with step 1.\
+\
+\\begin\{theorem\} Suppose $\\pi$ is a Baxter permutation of length $n+1$ compatible with a permutation $\\sigma$ of length $n$. Then the permutation obtained by transposing any two consecutive adjacent entries in $\\pi$ is also compatible with $\\sigma$.\
+\\end\{theorem\}\
+\
+\
+\\begin\{proof\} We want to show that if we have two adjacent consecutive entries in $\\pi$ that they create a block in its TOAD with a 1 in the center that, when rotated 90 degrees, has no effect on the center 1 (which represents an entry in $\\sigma$) or any surrounding tiles. Say we have adjacent consecutive entries. If there is a 0 in the smaller matrix between our adjacent 1's in the larger matrix, then we know from \\cite\{Canary\} that this forces an adjacent $-1$ entry, which is not allowed in the permutation case. So we have one possibility.\
+\
+\
+There is a 1 in the smaller matrix between our adjacent 1's in the larger matrix. In this case, there are only two possible tilings.\
+\
+\\begin\{figure\}[H]\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=4cm]\{Domino_C\}\
+\\caption\{Increasing sequence\}\
+\\label\{Block1\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=4cm]\{Domino_A\}\
+\\caption\{Decreasing sequence\}\
+\\label\{Block2\}\
+\\end\{subfigure\}\
+\\end\{figure\}\
+\
+\
+Clearly, these are blocks that, when rotated 90 degrees, have no effect on any outside entries and that maintain the same entry of the smaller matrix. Additionally, (a) is the rotated version of (b) and vice versa.\
+\\end\{proof\}\
+\
+Now, we move on to step 2. For this step, we must first introduce a lemma.\
+\
+\\begin\{lemma\} A $1$ entry in the larger of a compatible pair of permutation matrices must be adjacent to a $1$ entry in the smaller matrix. Equivalently, a $1$ entry in the larger matrix cannot be adjacent to only $0$ entries.\
+\
+\\begin\{proof\} Up to a reflection, there is only one tiling that allows a $1$ in the larger matrix to border only $0$s in the smaller, shown here:\
+\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=4cm]\{1out0\}\
+\\caption\{A lonely 1 in the larger matrix.\}\
+\\label\{Windmill\}\
+\\end\{figure\}\
+\
+But we know from \\cite\{Canary\} that this ``windmilled'' construction violates our Baxter condition, and is therefore not allowed.\
+\\end\{proof\}\
+\
+\\end\{lemma\}\
+\
+With this lemma, we can prove the following theorem.\
+\
+\\begin\{theorem\} The identity permutation $I_n = 123\\ldots n$ and the reverse identity permutation $R_n = n\\ n-1 \\ldots 1$ are both compatible with $F_\{n+1\}$ permutations of length $n+1$.\
+\
+\\begin\{proof\} We describe a bijection using the following algorithms.\
+\
+\\begin\{algorithm\} [P-T]This algorithm takes us from permutations of length $n+1$ compatible with the identity permutation of length $n$ to tilings of a strip of size $n+1$ with monominoes and dominoes. Given a permutation, read from left to right looking at adjacent pairs of indices (ie. 12, 23, 34, ...). For each pair, we add dominoes or monominoes to our strip going from left to right (for the reverse of the identity, go from right to left instead). There are four cases.\
+\
+\\begin\{enumerate\}\
+\\item The pair is increasing and consecutive. Add 2 monominoes to the strip, and skip the next pair.\
+\
+\\item The pair is decreasing and consecutive. Add a domino to the strip, and skip the next pair.\
+\
+\\item The pair is increasing and non-consecutive. Add a monomino to the strip, and go to the next pair (no skip).\
+\
+\\item The pair is decreasing and non-consecutive. This cannot happen while maintaining the identity in the smaller permutation. Lemma 5.3 tells us that any $1$ entry in our larger matrix must border a 1 entry in the smaller matrix. Given coordinates $(i,i)$ for a $1$ entry in the smaller identity matrix, the only available spots for a $1$ entry in the larger matrix are $(i,i)$, $(i,i+1)$, $(i+1,i)$, or $(i+1,i+1)$. If the pair is decreasing and non-consecutive, this means there is a $1$ entry in the larger matrix whose horizontal and vertical coordinates differ by more than one, which means the entry violates Lemma 5.3. This is illustrated in Figure \\ref\{IDstep4\}.\
+\
+\\begin\{figure\}[H]\
+\\centering\
+\\includegraphics[width=6cm]\{IDstep4\}\
+\\caption\{Since our smaller permutation is the identity permutation, there must be blocks arranged vertically in its TOAD as shown. Lemma 5.3 tells us that the only available places for $1$s in the larger matrix are those labelled with green dots. Each red line represents the index of the entry in our larger compatible permutation. So, we know that the first entry must be a $1$ or a $2$, and the last entry must be an $n$ or an $n+1$. We also know that there are only three options for each other entry, and that there is no way to arrange these options such that our larger compatible permutation has a decreasing non-consecutive adjacent pair.\}\
+\\label\{IDstep4\}\
+\\end\{figure\}\
+\\end\{enumerate\}\
+\\end\{algorithm\}\
+\
+We now have a set of rules that brings us from each permutation of length $n+1$ compatible with the identity permutation of length $n$ to a unique tiling of a strip of size $n+1$ with monominoes and dominos. Next we describe the reverse direction.\
+\
+\\begin\{algorithm\} [Reverse of P-T] This algorithm takes us from tilings of a strip of size $n+1$ with monominoes and dominoes to permutations of length $n+1$ compatible with the identity permutation of length $n$. Given a tiling, read from left to right looking at adjacent pairs of indices. For each pair, we add integers to our permutation going from left to right (for the reverse of the identity, go from right to left instead). There are four cases.\
+\
+\\begin\{enumerate\}\
+\\item The pair consists of two monominoes. Add the indices corresponding to the monominoes in increasing order to the permutation, and skip the next pair. This creates the increasing consecutive pair of digits from case 1 of Algorithm 5.5. \
+\
+\\item The pair consists of a single domino. Add the indices in decreasing order to the permutation, and skip the next pair. This creates the decreasing consecutive pair of digits from case 2 of Algorithm 5.5.\
+\
+\\item The pair consists of a monomino followed by the first half of a domino. Add the index of the monomino to the permutation, and go to the next pair (no skip). So, the next pair will be a domino, and this creates the increasing non-consecutive pair of digits from case 3 of Algorithm 5.5.\
+\
+\\item The pair consists of the last half of a domino followed by a monomino. This is impossible given rules 1, 2, and 3.\
+\
+\\end\{enumerate\}\
+\\end\{algorithm\}\
+\
+Because of Lemma 5.3, and as illustrated in Figure \\ref\{IDstep4\}, each entry in the larger compatible matrix must be one of those indices listed in the rules of Algorithm 5.6. Also, since these rules do not allow for repeated entries in the resulting permutation, they take us from each tiling of a strip of size $n+1$ with monominoes and dominoes to a unique permutation. By construction, each such permutation is of length $n+1$ and is compatible with the identity permutation of length $n$.\
+\
+So, the rules in these algorithms describe a bijection between permutations of length $n+1$ compatible with the identity permutation of length $n$ and monomino/domino tilings of a strip of size $n+1$, which are known to be counted by Fibonacci numbers.\
+\\end\{proof\}\
+\\end\{theorem\}\
+\
+Here are a few examples of length 5 permutations compatible with 1234 and their corresponding monomino/domino tiling by the algorithms above:\
+\
+\\begin\{figure\}[H]\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=4cm]\{12345\}\
+\\caption\{12345\}\
+\\label\{12345\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=4cm]\{21345\}\
+\\caption\{21345\}\
+\\label\{21345\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=4cm]\{21354\}\
+\\caption\{21354\}\
+\\label\{21354\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=4cm]\{12435\}\
+\\caption\{12435\}\
+\\label\{12435\}\
+\\end\{subfigure\}\
+\\end\{figure\}\
+\
+This concludes parts 1 and 2 of the proof of Conjecture 5.1. Now, we outline what we know about the conjectures in parts 3 and 4. First, we introduce some definitions that will be helpful in understanding how $I_n$ and $R_n$ can be used to interpret less orderly permutations.\
+\
+\\begin\{definition\} A $strip$ of blocks of size $n$ in a TOAD is a set of $n$ blocks arranged so that each block shares a border with another block in the strip, and one of the two following properties hold.\
+\
+\\begin\{enumerate\}\
+\\item Every block has the same horizontal coordinate. In this case, we call the strip a $vertical$ $strip$.\
+\
+\\item Every block has the same vertical coordinate. In this case, we call the strip a $horizontal$ $strip$.\
+\
+\\end\{enumerate\}\
+\
+\\end\{definition\}\
+\
+Here are a couple of examples of vertical and horizontal strips.\
+\
+\\begin\{figure\}[H]\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=1.5cm]\{VertStripAlt\}\
+\\caption\{Vertical strip of size 4\}\
+\\label\{Vertstrip\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=5cm]\{HorStripAlt\}\
+\\caption\{Horizontal strip of size 4\}\
+\\label\{Horstrip\}\
+\\end\{subfigure\}\
+\\end\{figure\}\
+\
+\\begin\{definition\} We call a vertical strip of blocks in a TOAD an $identity$ $strip$ if it has the property that all $1$s in the strip have the same horizontal coordinate.\
+\
+\\end\{definition\}\
+\
+\\begin\{definition\} We call a horizontal strip of blocks in a TOAD a $reverse$ $identity$ $strip$ if it has the property that all $1$s in the strip have the same vertical coordinate.\
+\
+\\end\{definition\}\
+\
+Here are a couple of examples of identity and reverse identity strips.\
+\
+\\begin\{figure\}[H]\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=1.5cm]\{IDstripvert\}\
+\\caption\{Identity strip of size 4\}\
+\\label\{IDstrip\}\
+\\end\{subfigure\}\
+\\begin\{subfigure\}[b]\{0.5\\textwidth\}\
+\\centering\
+\\includegraphics[width=5cm]\{IDstriphor\}\
+\\caption\{Reverse identity strip of size 4\}\
+\\label\{RIDstrip\}\
+\\end\{subfigure\}\
+\\end\{figure\}\
+\
+With these definitions, we introduce two conjectures that more formally describe parts 3 and 4 of our proposed proof of Conjecture 5.1.\
+\
+\\begin\{conjecture\} Given a permutation $\\pi$ of length $n$ and a compatible permutation $\\sigma$ of length $n+1$, the blocks in the TOAD for $\\pi$ and $\\sigma$ must be arranged in disjoint strips. Furthermore, we can convert each strip into an identity or reverse identity strip without changing $\\pi$.\
+\
+\\end\{conjecture\}\
+\
+\\begin\{conjecture\} Given a permutation $\\pi$ of length $n$ and a compatible permutation $\\sigma$ of length $n+1$, any swap of $1$ entries between disjoint strips in the TOAD for $\\pi$ and $\\sigma$ will result in a change in $\\pi$ (or, equivalently, a new arrangement of strips).\
+\
+\\end\{conjecture\}\
+\
+We think that the proofs of these conjectures must rely on the limited number of ways that $1$s in a larger compatible matrix may surround $1$s in the smaller matrix. Here are a few questions to consider. \
+\
+\\begin\{enumerate\}\
+\\item If we have a $1$ in the smaller matrix, and therefore a block in our TOAD, that only borders $0$ entries in the larger matrix, must the block be a part of a strip of size 2 or more? What can or must happen around this block?\
+\
+\\item If we have a $1$ in the smaller matrix that borders a single $1$ in the larger matrix, what does this mean for the adjacent rows and columns of the TOAD? What if it borders two $1$s?\
+\
+\\item What can/must happen at the ends of a strip and how can/must disjoint strips affect each other/fit together in a TOAD?\
+\
+\\item Finally, can we use these results to prove that there exists no set of transpositions of $1$ entries in a larger matrix that moves a $1$ entry outside of the strip it lies on? In other words, can we prove that only the adjacent consecutive transpositions will maintain the same smaller matrix?\
+\
+\\end\{enumerate\}\
+\
+We have verified Conjecture 5.1 by computer data for $n \\leq 11$, where $n$ is the length of the smaller permutation. Ideally, we would like our conjectures to give us an exact formula for the number of compatible larger permutations given any smaller permutation. However, in larger cases, it is harder to predict how many $1$ entries of our larger matrix lie in each strip. \
+\
+For instance, given a strip of size $n$, we have seen cases where this strip has $n+1$, $n$, or $n-1$ larger matrix $1$ entries. Here, we need to know how the relative location of each strip affects this number of $1$ entries. We have observed that those strips that do not border the edge of the Aztec diamond tend to be the ones with fewer total $1$ entries, and that those that do border the edge of the diamond require more $1$ entries to form legal tilings.\
+\
+\\section\{Questions and Open Problems\}\
+\
+\\begin\{enumerate\}\
+\
+\\item Can we classify the snow leopard permutations non-recursively?\
+\
+In this paper, we give a recursive characterization of snow leopard permutations, and shown how to generate them with transpositions. What other classifications exist? Is it possible to look at any given permutation and decide whether or not it is a snow leopard permutation without our decomposition?\
+\
+\\item Is Conjecture 5.1 true?\
+\
+The details related to this question are shown at the end of Section 5.\
+\
+\\item What smaller permutations are compatible with larger alternating Baxter permutations?\
+\
+This paper deals with larger doubly alternating Baxter permutations. What if the larger permutation is alternating and Baxter, but not doubly alternating? Are the smaller permutations compatible with these counted by products of Catalan numbers?\
+\
+\\end\{enumerate\}\
+\
+\\section\{Appendix:  Useful Code\}\
+\
+The programs we wrote to generate data for this project can be found at <URL HERE>.\
+\
+\\section\{Acknowledgements\}\
+\
+\\indent First and foremost, we would like to thank our advisor, Eric Egge, for his guidance, encouragement, and ever-present positivity throughout this project. We would also like to thank Jim Propp for meeting with us personally to discuss the trajectory of our research. Lastly, we would like to thank all members of the Carleton Mathematics department for their support and wisdom.\
+\
+\\begin\{thebibliography\}\{9\} %not sure what this 9 does...\
+\\bibitem\{Canary\} Canary, Hal.``Aztec diamonds and Baxter permutations." \\textit\{The Electronic Journal of Combinatorics\} 17.1 (2010): R105.\
+\
+\\bibitem\{ASM Domino\} Elkies, Noam, Kuperberg, Greg, Larsen, Michael, and Propp, Jim.``Alternating-sign matrices and domino tilings (Part I)." \\textit\{Journal of Algebraic Combinatorics\} 1.2 (1992): 111-132.\
+\
+\\bibitem\{DABP Catalan\} Guibert, Olivier and Linusson, Svante. ``Doubly alternating Baxter permutations are Catalan." \\textit\{Discrete Mathematics\} 217.1 (2000): 157-166.\
+\
+\\bibitem\{DABP Structure\} Ouchterlony, Eric. ``Pattern avoiding doubly alternating permutations.'' http://garsia.math.yorku.ca/fpsac06/papers/83.pdf\
+\
+\\end\{thebibliography\}\
+\
+\
+\\end\{document\}}

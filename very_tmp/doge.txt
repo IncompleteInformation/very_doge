@@ -1,0 +1,50 @@
+Alexander R. Rusciano
+alex.rusciano@gmail.com
+300 North College Street l Northfield, MN 55057 l 832-877-7788
+
+Education
+
+Carleton College, Northfield, MN (2010-Present)
+B.A. in Mathematics, expected June 2014
+Cumulative GPA: 3.93; Major GPA: 4.0
+
+Budapest Semesters in Mathematics, Budapest, Hungary (September 2012 – December 2012)
+Courses: Measure Theory, Functional Analysis, Topics in Geometry, Differential Geometry, Algebraic Topology
+
+Canada/USA Mathcamp (July 2010 – August 2010)
+Attendee at summer program sponsored by the American Mathematical Society
+
+St. Thomas High School, Houston, TX (2006-2010)
+Valedictorian (1/180)
+
+Research Experience
+
+Director’s Summer Program, National Security Agency, (June 2012-August 2012)
+Participant in 12 week summer research program at NSA
+Implemented and optimized cryptographic algorithms for a variety of different computer architectures
+Developed and applied strategies of automated generation of C source code
+Presented results to CCR-Princeton and wrote technical paper (internally published)
+
+SCAMP, Center for Communications Research (IDA-CCR – La Jolla), (June 2013-August 2013)
+Adjunct researcher at SCAMP (10 week summer conference sponsored by Institute for Defense Analyses)
+Applied mathematics to solve problems of interest to cryptography
+Presented results in technical talks and papers (internally published)
+
+Math Competitions
+
+Putnam - Score 29, Top 500 List (December 2012)
+Budapest Semesters in Mathematics Competition (November 2012) - placed third
+Konhauser Math Competition (a regional contest) - Team placed fifth (2011), second (2012), and second (2013)
+
+Programming Skills
+
+Proficient in C, C++; Java, Python, Magma experience
+Multithreaded and Concurrent programming
+Graphics programming with Opengl
+Personal projects (only one currently): https://github.com/alexrusciano/Rotations
+
+Miscellaneous
+Held top secret security clearance
+SAT: 800 Verbal / 800 Math / 770 Writing, out of 800
+GRE: 166 (96%) Verbal / 170 (98%) Quantitative / 4.5 (78%) Writing, out of 170, 6 respectively
+Math Subject GRE: 870 (91%), out of 900

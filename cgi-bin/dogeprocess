@@ -1,0 +1,22 @@
+#!C:/python27/python.exe
+#import cgi
+#import cgitb; cgitb.enable()
+
+#import subprocess
+#import os
+
+print """<!DOCTYPE HTML>
+<html><head><title>very doge</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<input name="file_1" type="file"><br>
+<input name="submit" type="submit">
+<img src= "http://96.42.106.210/choose_file.jpg" alt="such incompatible">
+
+</form>
+</body>
+</html>"""
+#path = os.path.join(os.getcwd(), os.pardir, "very_tmp", "blood.pdf")
+
+#formatted = "pdftotext \"{0}\"".format(path)
+
+#os.system(formatted)

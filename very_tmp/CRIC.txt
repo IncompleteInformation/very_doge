@@ -1,0 +1,326 @@
+Introduction
+	Every two years, CRIC does a campus wide survey to gauge community beliefs and attitudes about issues surrounding Carleton's endowment and the role of CRIC on campus. This fall, we surveyed the campus community in continuation of this data collection process. The results of our research will not only help CRIC determine its agenda but also convey to the Trustees the thoughts of the campus when it comes to issues surrounding Carleton's investments. 
+	We are have two main goals for this study. The first is to assess awareness of CRIC and the endowment in the Carleton community. We want to answer questions such as: What percentage of the community is aware of CRIC and its purpose? How would people like to interact with CRIC? How knowledgable is the community of the endowment? The second goal is to investigate community attitudes towards Carleton’s endowment, and how CRIC can best communicate these attitudes to the board of trustees. We wish to answer how people want Carleton to vote on certain corporate resolutions, and also to what extent the community wants the college to pursue socially conscious investment strategies.  
+	In order to obtain a representative sample of the Carleton community, we chose to survey students, alumni, faculty, and staff. This population does not include friends of the college such as parents, or other non-alumni donors who have invested interest in Carleton and its endowment. However, due to the difficulty of obtaining contact information for these parties, we chose to exclude them from our study. We feel that surveying the four groups mentioned above will give us a generally representative opinion of the Carleton campus.
+	A movement towards socially conscious investing is gaining recognition across many small private liberal arts college. Other schools such as Dickinson, Middlebury, Pomona, Amherst, among others also have committees similar to CRIC, and are also striving to strike a balance between maximizing the value of their endowments, while still pursuing socially conscious goals. At each of these schools, the investing committees appear to have varying amounts of responsibility and recognition on campus, and as a part of this study we seek to discover how respected and renowned CRIC is on Carleton’s campus.
+	The Responsible Endowments Coalition is an organization dedicated to promoting socially conscious investing by university endowments. To date, it has worked with and supported students on over 300 campuses. Their primary campaign encourages divestment of certain industries, and also reinvestment in local community businesses and initiatives. However, there is also a strong movement which argues that divestment is not the proper forum for addressing social issues. A study performed on Pomona’s endowment demonstrates that were Pomona to pursue divestment of fossil fuels, in the next ten years there would be a negative impact of $419 million on the endowment. As part of our study, we seek to understand how Carleton views the tradeoff between divestment and a strong endowment.
+
+
+RESULTS
+Knowledge of CRIC, Carleton’s Investments, and the Endowment:
+We find that Carleton’s community at large is not very aware of CRIC and its responsibilities. Table A gives a breakdown of CRIC awareness in the community. Faculty and Staff tend to be more aware of CRIC and its responsibilities, while Alumni are the least aware. It is particularly striking that only 5.88% of alumni, and 11.69% of students are aware of CRIC’s responsibilities.
+It is encouraging that many respondents expressed interest in CRIC and wanted to become more involved. Table B displays data showing to what extent people wish to interact with CRIC. Additionally, we have included other suggestions for how people want to be involved in the appendix.
+The Carleton Community is much more aware of the Carleton endowments existed; we estimate that 93.75% of people are aware of the endowment, and we are 95% confident that the true percentage of people who are aware of the endowment lies between (include CI). However, beyond basic recognition, many people were unaware of the endowment size and composition.
+Faculty and Staff were fairly accurate in their estimates of the total value of Carleton’s endowment, while students’ estimates were the most variable and alumni estimates tended to most undervalue the endowment. Figure ? shows a box-plot for estimated endowment size, while Table B provides summary data. Staff demonstrate the highest rates of people who visited the endowment website. We hypothesize that this is because many staff work in the business office or administrative positions in which they would visit the investment office website at some point or another as part of their job duties. We broke down the Staff visitation rate even further and found that no staff identified as union members have visited the investment office website, while 42.55% of exempt workers have visited it with a standard error of 6.74%
+We found it surprising that over 20% of students reported they can name a stock that Carleton has shares in, while only 6.49% are estimated to have visited the investment office’s website. It is unclear as to where students are receiving information about stock holdings, but we hypothesize that they may have this awareness due to reading Carleton publications or general word of mouth among students.
+Table D summarizes how effective people think CRIC is at carrying out their responsibilities. Notice the large percentage of people who “Don’t Know” (approx.. 72.4%). We believe that this is because this question was asked to everyone, regardless of whether they had even heard of CRIC or not. We also asked people to estimate how many of CRIC’s suggestions on resolutions were adopted by the Board of Trustees. Figure 2 displays the distribution of responses, revealing that most people either said that CRIC was 100% effective, 0% effective, or 50% effective. In other words, it seemed like people guessing and either chose an extreme or the middle. 
+
+
+
+
+Students
+Alumni
+Faculty
+Staff
+Total
+Average guess of endowment
+$392,606,349
+($81,493,417)
+$326,080,688
+($53,952,892)
+$549,906,410
+($36,166,795)
+$545,692,150
+($35,899,535)
+$339,758,706
+($48,024,858)
+Proportion who have visited the investment office’s website
+6.49%
+(2.77%)
+5.88%
+(1.8%)
+7.55%
+(3.27%)
+30.95%
+(4.72%)
+6.61%
+(1.61%)
+Proportion who can name one of Carleton’s top 10 stock holdings
+20.78%
+(4.56%)
+4.71%
+(1.62%)
+11.32%
+(3.92%)
+19.05%
+(4.01%)
+6.46%
+(1.48%)
+
+
+Info Session
+Town Hall Meetings
+Advertise for and direct people to CRIC’s website
+Attend CRIC meetings
+Percent Interested
+34.05%
+(3.22%)
+10.34%
+(1.91%)
+10.04%
+(1.85%)
+4.65%
+(1.37%)
+
+
+
+Students
+Alumni
+Faculty
+Staff
+Total
+Proportion who have heard of CRIC
+35.07%
+(5.36%)
+16.47%
+(2.84%)
+64.15%
+(5.93%)
+55.95%
+(5.06%)
+19.53%
+(2.55%)
+Proportion who know CRIC’s responsibilities
+11.69%
+(3.61%)
+5.88%
+(1.8%)
+39.62%
+(6.05%)
+28.57%
+(4.61%)
+7.32%
+(1.62%)
+Proportion who have visited CRIC’s website
+6.49%
+(2.77%)
+1.18%
+(.83%)
+3.77%
+(2.36%)
+15.48%
+(3.69%)
+2%
+(.77%)
+
+
+Very Effective
+Effective
+Neutral
+Ineffective
+Don’t Know
+Percentage of people who think CRIC is:
+2.15%
+(.091%)
+10.846%
+(2.10%)
+6.98%
+(1.63%)
+.386%
+(.0158%)
+72.4%
+(2.98%)
+
+ 
+
+
+Stances on Issues:
+
+Resolutions
+People seemed to strongly favor companies being more transparent about their practices. Although about 70% of people desire transparency from companies on specific issues, this does not necessarily mean that they agree or disagree with the issue. For example, 73.36% of people want companies to disclose their greenhouse gas emissions, but more people thought Carleton shouldn’t divest from fossil fuels than should (see Table G). Therefore, we see Table E as simply representing a strong desire from the Carleton Community to have as much information as possible. 
+
+Disclose:
+Green house gas emissions
+Fracking
+Political contributions
+Anti-discrimination
+Policies
+Percentage who said “Yes”
+73.36%
+(3.01%)
+66.72%
+(3.21%)
+72.12%
+(3.04%)
+77.18%
+(2.85%)
+
+Table F reveals that almost 70% of people want companies to require a vote on executive compensation. This seems to represent a strong displeasure people have with current executive compensation levels, a sentiment that came out in many respondents comments.
+
+Out of all the resolutions that people were asked about, the only one that a majority did not favor was one that would require the Chair of the Board be an independent member. Only about 36% of people support this resolution, which could be because 42.59% (with a 3.35% SE) of people have no opinion. Compared to the percentage of people who have no opinion on the other resolutions, this could suggest that people did not understand this issue or what the question was asking. 
+
+Percentage of people who think that companies should require a vote on executive compensation
+67.71%
+(3.13%)
+Percentage of people who think that the Chair of the Board should be an independent member
+35.85%
+(3.3%)
+
+Divestment
+
+Most people’s primary reason for divestment seems to be one of two things: 1) to pressure corporations into changing objectionable practices and 2) not wishing to participate in the objectionable practices. Combined, these to reasons represent about 60% of why people wish to divest. Table G gives a more detailed picture of what people saw as their primary reason for divestment. It is interesting to note that while only about 12% of people thought Carlton shouldn’t divest, more people thought Carleton shouldn’t divest than should when asked about fossil fuels (see Tables H). This could mean that the issue specific questions we asked about divesting did not capture the issues people really care about. 
+
+
+Pressure corporations into changing objectionable practices
+Non-participation in the objectionable practices
+Make a symbolic public statement about certain practices
+Carleton should not divest
+Don’t Know
+Percentage who agreed with the following as their primary reason for divestment
+29.16%
+(3.12%)
+28.6%
+(3.12%)
+11.23%
+(2.11%)
+12.40%
+(2.28%)
+8.96%
+(1.78%)
+
+*approximately 9.65% of people did not respond. 
+
+Overall, the combined percentage of people who strongly agree and agree with divesting from fossil fuels is about 13% points less than the combined percentage of people who strongly disagree and disagree with divesting from fossil fuels. This large difference seems to mainly be driven by nearly 7% more people disagreeing with divestment from fossil fuels than agreeing. In other words, the percentage of people who selected extreme responses is about equal while there is a large difference between the more moderate options, while there is a large difference in the more moderate responses. 
+
+
+
+
+
+
+
+
+Strongly Agree
+Agree
+No Opinion
+Disagree
+Strongly Disagree
+Percentage of people who feel the following way about Carleton Divesting from fossil fuels
+10.281%
+(2.05%)
+23.65%
+(2.85%)
+16.56%
+(2.53%)
+30.42%
+(3.17%)
+13.16%
+(2.36%)
+ 
+
+
+Table I shows that the largest percentage of people agree that Carleton should invest in ESG funds even if it means a lower return on the endowment. 
+
+
+
+Strongly Agree
+Agree
+No Opinion
+Disagree
+Strongly Disagree
+Percentage of people who think Carleton should invest in ESG funds, even if it means a smaller return
+9.37%
+(2.04%)
+35.6%
+(3.27%)
+13.74%
+(2.3%)
+23.29%
+(2.89%)
+11.54%
+(2.2%)
+
+
+Discussion
+            Our survey clearly shows that the campus community is largely unaware of CRIC, its work, and the particulars of the endowment. People are generally interested in CRIC’s work and the endowment, and many want to get involved. However, we find that opinions towards the endowment are more mixed. On resolutions, most people support efforts to increase disclosure, but there is less support for requiring corporate action in other areas. Additionally, there is no consensus in the data on divestment. Some people support divestment, while others are vehemently opposed. Looking at the data in total, almost everyone shares has a desire to promote positive social change, but not everyone believes that the endowment is the right battlefield for these issues.
+            These conclusions generally go along with what we expected when beginning this study.  The discussion of socially conscious investing in endowments is relatively new, and there is no consensus on what is the proper approach to this topic. This raises a few new questions, which may be worth pursuing in the future. Firstly, we are interested in learning more about why people form their opinions surrounding the endowment. As this is a relatively new issue, we believe that many students, alumni, faculty, and staff are relatively uninformed about how big of an impact socially conscious investing could have, both on the endowment’s value and as a vehicle for social change. Many commenters expressed concern that the survey was ‘too simplistic’ and the issue is far too complex to be captured in a survey. Perhaps a more informed discussion and further research will result in more public consensus on the issues.
+            One unanticipated issue with our survey is that some faculty and staff members are also alumni of the college. We did not give them an option to identify as a part of multiple groups in our survey. We feel that this is not a significant issue since the percentage of people in our population who would identify with more than one group is small.
+            In our analysis, we assumed that each person in our sampling frame was equally likely to respond to our survey.  Unfortunately, this assumption is probably not true. We hypothesize that people who are more interested in Carleton and its endowment would be more likely to respond. These people are also more likely to know more about investing and endowment issues, suggesting our data could be biased.
+            Fortunately, when designing our study, we had significant input from CRIC and were able to solicit many important data points. We spent a lot of time working to tweak our survey in order to have an optimal result in the end. However, there is always room for improvement. The least effective part of our survey was on issues surrounding the endowment. The topic of ESG investing and divestment is very complex, and we could have sculpted our questions in a way to receive results with more depth on these issues. In practice we realized this is a very tough topic to survey for since it is complex and not very many people are aware of these endowment/investing issues.
+
+
+
+
+
+
+Appendix I - Summary of Detailed Responses
+
+How Can CRIC Be More Involved in the Carleton Community
+-Information about CRIC should be made available whenever financial information is shared with the Carleton community
+-More active with alumni annual fund and its solicitations
+-Keep sending surveys
+-Send recommendations to Alumni for approval or disapproval
+-Active social media efforts
+-Provide occasional email updates
+-More publicity (posters, tabling, campus calendar, NNB)
+-Feature in the voice
+-Make CRIC’s recommendations to the board available on the college website
+-Show how CRIC’s actions affect our lives & institutional direction
+-Speak at faculty, forum, and SAC meetings
+-Send quarterly or annual report of activities to all
+-CRIC should be more involved with alumni - not students. Don’t get the kids caught up in vast questions, let them get an education first.
+-Invite more student involvement
+-Teach community the importance of knowing/understanding investing
+-Transparency is key
+-Create an opt-in listserv with updates
+
+Other Ideas for Resolutions
+Requre ‘triple bottom line’ reports like Novo Nordisk A/S
+Require independent nomination of corporate directors
+Restructure and limit executive compensation
+Actively pursuing alternative energy
+Request disclosure to about corporate contributions to super-PAC’s
+Resolutions to make it easier to suggest and pass more resolutions!
+Request report of proportion of employees covered by health insurance.
+Statement of ratio of CEO compensation to the median compensation in the company/corporation
+Disclose conflict of interest of board members
+
+Other Comments on Divestment
+Divest if companies are doing poorly
+Divesting should be a last resort - work for change as an investor
+If we divest we lose any leverage we may have by being a shareholder
+Carleton should never divest in an effort to pressure a company. Divestment is only a symbolic gesture -- the non-customers who have the most influence over a company's practices are its shareholders, and by maintaining holdings in a company, Carleton retains a voice in the company's practices. It is foolish to think that, by divesting we are pressuring a company in a certain way. This only allows shareholders with lower ethical/social standards to hold more shares in the company (and thus, exert greater control)
+
+
+On the Endowment and Investment Office
+- Investment office is far away, disjoint from campus life and community values
+ also believe non-partisan, smart investing is vital to the strength of the endowment.
+Maximizing opportunities for students (aid), faculty (wealth creation, research) and perpetuating the college (facilities, larger endowment) would be my bias in making investment decisions.
+I work at one of the largest asset management companies in the world.  I would like to participate more in the endowment and CRIC
+I think Carleton needs a serious session with experienced alums who have done well and know what's going on, like me, and know that paying people to try to pick stocks is ridiculous.    The smart institutions are going to index funds.
+Carleton should be invested only in stock index funds.   Trying to do better than the market is nonsense.   Trying to time the market, pick stocks, etc., only lines the pockets of investment advisers.    What Carleton needs to divest is the idea of managed stock accounts.
+I think it's great that people are thinking about how we invest, and it's even greater that you're trying to engage the community.  But with a lot of our investment operations way up in the Twin Cities, and with trustees really not interacting much with the community (there used to be a "trustee in residence" program, I think back in the 90s), and with lots of pressure on us to increase economic diversity in the student body (which requires aid) and generally do everything we want to (including give everyone pay increases), with key advancement officers out in left field down at 200 Division, it just feels as though we may be at cross purposes - although I know so little about CRIC that I really can't say.
+I don't believe there is any evidence that companies that pay attention to the triple bottom line are any less profitable than those that don't. I used to work at Roche and we had an MBO based on the carbon footprint of the company.
+I'm not entirely certain we can ever reasonably expect full disclosure of what public companies the endowment is invested in. My understanding of the investment office's practices indicates that a lot of the endowment is invested with other investment offices (like hedge funds) who may or may not disclose what public companies they invest in.
+Rather than prohibit certain investments, I favor that the endowment measure it's ESG performance alongside it's risk/return measures.  And the ESG should be measured by an independent entity that that also considers the extent to which the public sector has already addressed these social externalities through tax/regulatory policies, which I consider the primary actor for setting of fair"rules of the game'.
+
+
+Comments on Separation between Endowment and Social Issues
+I am well known as a campaigner for renewable energy, e.g., methane or hydrogen from seaweed, micro-hydro instead of dams, BUT I do not therefore believe in mixing this professional practice, which is plainly against Big Oil, with any college-wide campaign to renounce any ties with Big Oil. I campaign to replace fossil fuels.  But I don't think that should also be the job of endowments, which have a fiduciary responsibility to earn money.  Endowments build up capital.  Business enterprises like mine carry on the struggle to change environmental impacts.  Don;t get endowments mixed up in what is business.  If one does that, one would have to "divest" shares in airline companies, that burn fossil fuels, in agribusinesses, that use fossil fuels widely, or in the chemical industry, which makes both "good" products and "bad" ones. Endowments are no place for crusades.
+There should be a firm separation between Endowment and Politico-environmental Belief.  This should be similar to the Constitution-guaranteed separation between Church and State.  Colleges should not be battlegrounds.  The battles start with Commencement.  I turned down Columbia University in 1968 for precisely this reason.  As for the 350 people:  I met them in New Zealand.  I don;'t like their proselytizing, and I don't see that it achieves any significant change.  When Rockefeller and Pratt and other businessmen changed the kerosene source from whales to oilfields, they did not do this with campaigns to save the whales. They did it with better delivery of a then-better product.    I would be happy to issue opinions against  politically or environmentally-principled divestiture  of investments.  Only in cases of blatant   criminality should a divestiture occur. My record on  environmental activism, if one were to call it that,  is strong.  I believe that environmentalism will be more effective in doing what Rockefeller and Pratt:  develop and deliver a better line of products that people will buy; i.e., compete in the market.
+Nothing personal, but I think the purpose of the CRIC is mixing purposes in an ineffective manner.  Have the Carleton endowment maximize returns.  If there is to be some social aspect that you think should be associated with the money, do it directly, not indirectly through investment selection.  I'm all for "doing good", I just think that trying to accomplish that through investment selection is a very ineffective way of doing so.
+I don't think investing is the proper format for these issues.  I think global warming is a highly dangerous reality.  However, unless you think the campus should stop using fossil fuel based vehicles, accepting students who must travel by plane, or car, I see no reason to stop owning stocks in companies who provide these services.   I hope this CRIC is not presenting itself as representative of the Carleton community, and I do appreciate the chance to participate in this survey.
+
+Other Comments/Suggestions
+Reach out to other similar schools to find common ground and increase leverage.   Establish common principles or goals.
+Given the relative size of Carleton's endowment, I feel it is unlikely that any decisions by the college will impact corporate behavior. What is happening so that a coalition of like-minded schools can act together? That seems like where the focus should be at this time. I'm not saying that even that would be enough to attract corporate attention...but it would be more likely to do so than Carleton acting alone.
+- Clearly I do not agree with your agenda
+Your survey is way too simplistic.  It is much harder to evaluate what determines which companies are "good" and which are "bad" than your survey suggests.  Carleton has been around the block on this before when the big issue was divestment in South Africa.  A company may be "investment worthwhile" because it goes to great effort to reduce greenhouse gases and at the same time "investment unworthwhile" because it exploits its workers by paying low wages. Who gets to decide this?  The world is complicated --- don't pretend it is simple.
+Divestment from South Africa was a huge issue when I was on campus (1987-91). As I recall (it was a long time ago and I don't remember the details), the board made a controversial and unilateral decision to not divest over the objections of the students and faculty. I am glad to see a more thoughtful effort to include participation of the Carleton community and hope that the voice of the community is taken more seriously this time.  However, I do not support divestment from all fossil fuel companies. I bet there are few members of the Carleton community who do not rely in important ways on fossil fuels to get to school, heat their homes etc. I would prefer a concerted effort to put a percentage of investments in companies that provide alternative energy sources such as wind and solar power and electric vehicles.
+Although environmental/social investment strategies are laudable, I strongly believe in Carleton's mission.  I trust the powers that be to balance economic need with social and environmenal statements.  For example, nearly all of us use oil for some reason.  If oil investments are part of Carleton's portfolio, then I ask that the oil company chosen be one that has the least minuses in the social justice/environmental area.
+Generally, I think that giving people (like students) access to more information (like holdings) is a good thing, but offering too much info is perhaps a problem if students are spending so much time discussing and acting upon college policy that they're not tending to their coursework.
+These are really difficult issues, and this kind of survey doesn't allow for any of the considerations of how to weigh different values.  If you want input from alumni like myself, perhaps a more open-ended conversation would be advisable.
+
+
+
+
+

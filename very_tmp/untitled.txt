@@ -1,0 +1,57 @@
+Towards a Model of Regional Brain Connectivity using Probabilistic Index of Connectivity
+ Jack Hessel,  and Kevin Liao Mikenna Everett,
+
+Abstract Abstract is always written last!
+
+Introduction
+Diffusion weighted imaging is used to provide a non-invasive map of water diffusivity in the brain. Information within these images is often compressed into diffusion tensors, linear transformations that model the underlying diffusivity at different regions within the brain. Generally, for each voxel in an image a single tensor is fit, resulting in a discrete tensor field. Tensors fields can be used to infer different aspects of the underlying fiber structure within the brain. Of particular interest are tractography methods that use numerical integration to trace continuous paths in vector fields. [More about tractography in general] Streamline tracing methods, however, can often provide inaccurate results due to noisy data and a lack of voxel resolution. Furthermore, tractography is somewhat chaotic. The basic method is highly sensitive to the seed point chosen, for instance; nearby seed points can produce drastically different tracts. An extension to these linear tracking methods that aims to, on average, overcome some of these shortcomings is the probabilistic connectivity method, which generates many streamlines through a Monte Carlo simulation and ultimately computes an "index of connectivity" over all voxels in an image, given a starting region. [More about what this index of connectivity actually means, I know the other paper we read had a lot to say about this.]
+ Department
+
+Each Monte Carlo sample introduces variance into the underlying tensor field by slightly perturbing tensors in accordance with their associated fractional anisotropy. The more isotropic the region, the more the tensor is offset, on average. [Talk about why this is a good model of uncertainty in voxel fields] The goal of our work is to model regional connectivity within the brain based on a tensor field derived from a diffusion-weighted image. In general, much of the brain's "processing" occurs in cortical regions, while much of the brain's "communication" occurs in networked fiber bundles that connect different regions of the cortex. We believe it would be interesting to infer aspects of inter-cortical connectivity using a method based on PICo. Our method works as follows: 1. Determine the cortical shell for a given tensor field 2. Pick an interesting region of interest to start from 3. Perform PICo starting within that region of interest, and compute the index of connectivity from that region to each voxel within the cortical shell 4. Examine the connectivity distribution within the cortical shell and identify more regions of interest
+
+of Computer Science, Carleton College, Northfield, Minnesota, USA.
+
+1
+
+5. Run PICo starting from those regions of interest [Explain why we need the cortical shell] [Explain what we hope to gain from this approach (mutual connectivity between starting region and other regions, in addition to information about the regional network). ] [Explain why we only want to take "one more step" (one-step connectivity network) in the network for now. Results become less and less reliable for each recursive PICo computation we make] [Acknowledge that this is highly exploratory, and that our data might be difficult to analyze]
+
+[Describe why we want a cortical shell: someone to stop the tractography and determine regions of interest] [Describe how we might estimate a set of voxels that represents the cortical shell]
+
+Determining Regions of High Connectivity within the Cortical Shell
+[Describe peak finding algorithms] [Talk about peak radius, discuss a model for how you know where a region starts and stops (we might use a fixed radius around the highest point in a peak, or something more complicated)] [Re-emphasize what peaks mean in terms of connectivity to the seed region]
+
+Methods Probabilistic Index of Connectivity
+Probabilistic Index of Connectivity (PICo), originally proposed by [1], is a method of modeling uncertainty in tensor fields. Given a seed region, one can determine an estimate for the index of connectivity between that region and all other voxels in the brain by running repeated Monte Carlo simulations and normalizing the result to a probability distribution. The basic method works as follows. [Description of PICo Algorithm Here]. We implemented PICo with the 0th order tensor perturbation method as originally described by Parker et al. [Upsides and downsides here]
+
+One Step Further in the Regional Connectivity Network
+[Re-emphasize briefly motivation for going one step further in this network] [Start PICo from the regions of interest identified by the original tractography]
+
+Tractography in Modified Tensor Fields
+We implemented Euler's method for tractography [describe this method, its drawbacks (interpolation with single step size = problematic), why we chose it]
+
+Results
+To analyze our methods, we selected two starting regions of interest and observed the resulting one-step connectivity networks. [Describe which regions we chose and why
+
+Finding the Cortical Shell
+The cortex of the human brain is the [describe the human cortex and why we are interested in it] 2
+
+REGION X
+
+REGION Y
+
+Figure 2: Result of our method when started in REGION Y. REGION Y is given in red, and our algorithm identified three regions, given in blue, of primary connectivity within the cortical shell. One-step regions, which have connectivity associated with the primary connectivity regions, are identified in green.
+
+[Talk about the connectivity identified in this trial]
+Figure 1: Result of our method when started in REGION X. REGION X is given in red, and our algorithm identified three regions, given in blue, of primary connectivity within the cortical shell. One-step regions, which have connectivity associated with the primary connectivity regions, are identified in green.
+
+Discussion
+[Re-emphasize the exploratory nature of this work] [Talk about promising or disappointing results from region X/Y and why they are promising or disappointing.] [Talk about limitations of our approach and where we think it could be best improved] [Talk about what we'd like to do with this project now]
+
+References
+[1] Parker G, Haroon H, Wheeler-Kingshott C. A framework for a streamline-based probabilistic index of connectivity (PICo) using a structural interpretation of MRI diffusion measurements. Journal of Magnetic Resonance Imaging. 2003; 18: 242-254.
+
+[Talk about the connectivity identified in this trial]
+
+3
+
+
